@@ -1,0 +1,667 @@
+{
+  "id": "1834421",
+  "name": "cmdb-front",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "cmdb 前端图标",
+  "glyphs": [
+    {
+      "icon_id": "662771",
+      "name": "disabled",
+      "font_class": "iconfontjinzhi",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "2380276",
+      "name": "enabled",
+      "font_class": "enabled",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "2772642",
+      "name": "checkbox_enabled",
+      "font_class": "checkbox_enabled",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "3892769",
+      "name": "Admin",
+      "font_class": "Admin",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "4543686",
+      "name": "Disabled",
+      "font_class": "yijinyong",
+      "unicode": "e734",
+      "unicode_decimal": 59188
+    },
+    {
+      "icon_id": "6692517",
+      "name": "admin",
+      "font_class": "guanliyuan",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "6697044",
+      "name": "admin",
+      "font_class": "admin",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "7186307",
+      "name": "enabled",
+      "font_class": "enabled1",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "7468435",
+      "name": "admin",
+      "font_class": "admin1",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "7779150",
+      "name": "enabled",
+      "font_class": "enabled2",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "8335274",
+      "name": "block, banned, stop, disabled, ban",
+      "font_class": "blockbannedstopdisabledban",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "8335382",
+      "name": "block, banned, stop, disabled, ban",
+      "font_class": "blockbannedstopdisabledban1",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "8473720",
+      "name": "disabled",
+      "font_class": "disabled",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "8644510",
+      "name": "admin",
+      "font_class": "login1",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "8646262",
+      "name": "admin",
+      "font_class": "admin2",
+      "unicode": "e6d2",
+      "unicode_decimal": 59090
+    },
+    {
+      "icon_id": "9835764",
+      "name": "Disabled",
+      "font_class": "btnIcon-",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "10403662",
+      "name": "admin",
+      "font_class": "admin3",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "11961754",
+      "name": "engine-icon-rbac-enabled",
+      "font_class": "zaixiankapianx",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "12082182",
+      "name": "enabled",
+      "font_class": "enabled3",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "12754194",
+      "name": "fbi-checkbox-enabled-selected",
+      "font_class": "fbi-checkbox-enabled-selected",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "13706470",
+      "name": "GoogleMaterial ic sync disabled 48px",
+      "font_class": "GoogleMaterialicsyncdisabledpx",
+      "unicode": "ec0a",
+      "unicode_decimal": 60426
+    },
+    {
+      "icon_id": "13713232",
+      "name": "wifi-disabled",
+      "font_class": "wifi-disabled",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "14919887",
+      "name": "user",
+      "font_class": "gerenzhongxin3",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "14930744",
+      "name": "enabled",
+      "font_class": "enabled4",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "2868688",
+      "name": "boy",
+      "font_class": "boy5",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "4806805",
+      "name": "fac 64, girl, Female",
+      "font_class": "facgirlFemale",
+      "unicode": "f235",
+      "unicode_decimal": 62005
+    },
+    {
+      "icon_id": "8023029",
+      "name": "boy",
+      "font_class": "boy6",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "8126214",
+      "name": "24-AID-Girl",
+      "font_class": "-AID-Girl",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "8616196",
+      "name": "Girl-24x24",
+      "font_class": "Girl-x",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "9343882",
+      "name": "vector_drawable_girl_normal",
+      "font_class": "vector_drawable_girl_normal",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1840969",
+      "name": "boy",
+      "font_class": "boy4",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "2766841",
+      "name": "my-girl",
+      "font_class": "my-girl",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "217284",
+      "name": "boy",
+      "font_class": "boy1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "403130",
+      "name": "boy",
+      "font_class": "boy51",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "729349",
+      "name": "boys",
+      "font_class": "boys",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "9489379",
+      "name": "boy",
+      "font_class": "boy2",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "9489380",
+      "name": "girl",
+      "font_class": "girl1",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "845656",
+      "name": "girl",
+      "font_class": "girl",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "13105524",
+      "name": "boy",
+      "font_class": "boy",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "2182080",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "5530081",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin1",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "8890261",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin11",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "9088322",
+      "name": "个人中心 选中",
+      "font_class": "gerenzhongxinxuanzhong1",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "11450989",
+      "name": "个人中心 _选中",
+      "font_class": "gerenzhongxin_xuanzhong-copy-copy",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "12327912",
+      "name": "个人中心 _选中",
+      "font_class": "gerenzhongxin_xuanzhong-copy",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "14168180",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin2",
+      "unicode": "e77d",
+      "unicode_decimal": 59261
+    },
+    {
+      "icon_id": "30225",
+      "name": "setting",
+      "font_class": "icon12",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "352255",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "370231",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "927003",
+      "name": "edit",
+      "font_class": "edit1",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "1135178",
+      "name": "add",
+      "font_class": "add1",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "1660800",
+      "name": "add",
+      "font_class": "add2",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "2439364",
+      "name": "add",
+      "font_class": "add3",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "2703298",
+      "name": "add",
+      "font_class": "add4",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "2931141",
+      "name": "edit-2",
+      "font_class": "edit-2",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "3520745",
+      "name": "Time Setting",
+      "font_class": "ziyuan",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "3548056",
+      "name": "material-delete",
+      "font_class": "delete",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "4000917",
+      "name": "setting fingerprint",
+      "font_class": "APPiconxinban-",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "4537015",
+      "name": "alter_delete",
+      "font_class": "delete-f73f44",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4899082",
+      "name": "edit 删除",
+      "font_class": "editshanchu",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "5148015",
+      "name": "setting for vin",
+      "font_class": "setting",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "5846133",
+      "name": "edit properties",
+      "font_class": "editproperties",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "6010229",
+      "name": "add",
+      "font_class": "add5",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "6333504",
+      "name": "loading",
+      "font_class": "xingzhuang",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "6485773",
+      "name": "add",
+      "font_class": "add-solid",
+      "unicode": "e78f",
+      "unicode_decimal": 59279
+    },
+    {
+      "icon_id": "7143078",
+      "name": "setting",
+      "font_class": "setting1",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "8498732",
+      "name": "setting",
+      "font_class": "setting2",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "8834061",
+      "name": "edit",
+      "font_class": "edit2",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9063119",
+      "name": "edit",
+      "font_class": "edit3",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "11016143",
+      "name": "Delete train set",
+      "font_class": "Deletetrainset",
+      "unicode": "e6d9",
+      "unicode_decimal": 59097
+    },
+    {
+      "icon_id": "12683439",
+      "name": "setting",
+      "font_class": "setting3",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "13362535",
+      "name": "delete",
+      "font_class": "template_delete",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "13994583",
+      "name": "settings (1)",
+      "font_class": "settings",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "14030063",
+      "name": "win_setting_lock",
+      "font_class": "setting_lock",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "14178557",
+      "name": "Delete learning",
+      "font_class": "Deletelearning",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "14491485",
+      "name": "Administrator settings",
+      "font_class": "Administratorsettings",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "908636",
+      "name": "005. Log Out",
+      "font_class": "005logout",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "3268192",
+      "name": "log out",
+      "font_class": "logout",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "4847262",
+      "name": "log out",
+      "font_class": "logout1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "9060398",
+      "name": "Log out",
+      "font_class": "Logout1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "10226039",
+      "name": "Log out",
+      "font_class": "Logout2",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "462769",
+      "name": "log in",
+      "font_class": "login",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1446461",
+      "name": "login_user",
+      "font_class": "login_user",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "1463669",
+      "name": "login_password",
+      "font_class": "login_password",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "5148624",
+      "name": "login_账户",
+      "font_class": "login_zhanghu",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "5148630",
+      "name": "login_密码",
+      "font_class": "login_mima",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "8017526",
+      "name": "login_password",
+      "font_class": "login_password1",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "8017582",
+      "name": "login_register",
+      "font_class": "login_register",
+      "unicode": "e6c2",
+      "unicode_decimal": 59074
+    },
+    {
+      "icon_id": "8017608",
+      "name": "login_username",
+      "font_class": "login_username",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "8017614",
+      "name": "loginmsgvalid",
+      "font_class": "loginmsgvalid",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "10343177",
+      "name": "Login",
+      "font_class": "Login",
+      "unicode": "e758",
+      "unicode_decimal": 59224
+    },
+    {
+      "icon_id": "12270785",
+      "name": "login_data",
+      "font_class": "login_data",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "12270789",
+      "name": "login_password",
+      "font_class": "login_password2",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "10343180",
+      "name": "Logout",
+      "font_class": "Logout",
+      "unicode": "e759",
+      "unicode_decimal": 59225
+    }
+  ]
+}

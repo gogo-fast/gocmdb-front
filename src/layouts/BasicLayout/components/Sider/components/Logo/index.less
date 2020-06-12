@@ -1,0 +1,37 @@
+@import "../../../../layout-global";
+
+
+.logo-container {
+  display: flex;
+  height: @header-height;
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+
+    .logo-img {
+      margin-left: 24px;
+      height: 32px;
+    }
+
+    .logo-banner {
+      line-height: 32px;
+      overflow: hidden;
+      margin: 0;
+      padding-left: 16px;
+      font-size: 20px;
+      font-weight: 600;
+      font-family: Arial, serif;
+    }
+
+    .logo-banner-light {
+      .logo-banner;
+      color: @dark-logo;
+    }
+
+    .logo-banner-dark {
+      .logo-banner;
+      color: @light-logo;
+    }
+  }
+}

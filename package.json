@@ -1,0 +1,41 @@
+{
+  "name": "gogo-fast-front",
+  "version": "1.0.0",
+  "description": "Front side of gogo-cmdb Base On Ant Design",
+  "keywords": [
+    "ant",
+    "antd",
+    "admin",
+    "layout",
+    "design",
+    "frontend",
+    "react",
+    "cmdb",
+    "pure"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "contributors": [
+    "gogo-fast"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gogo-fast",
+  "license": "MIT",
+  "dependencies": {
+    "ant-design-pro": "^2.3.2",
+    "antd": "^3.26.16",
+    "moment": "^2.26.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "umi-plugin-react": "^1.15.8"
+  }
+}
