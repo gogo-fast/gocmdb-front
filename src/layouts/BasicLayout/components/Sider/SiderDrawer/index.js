@@ -3,12 +3,12 @@
 * */
 import {connect} from 'dva';
 import {Drawer} from 'antd';
-import SiderMenu from "./components/SiderMenu";
+import SiderMenu from "../components/SiderMenu";
 
-import Logo from "./components/Logo";
+import Logo from "../components/Logo";
 
 
-const Siderdrawer = (props) => {
+const SiderDrawer = (props) => {
     return (
         <Drawer
             // title={<Logo/>}  // if set logo here, a white line will appear underneath
@@ -37,4 +37,4 @@ export default connect(
     {
         "onClose": () => ({type: "layout/siderDrawerTrigger", payload: {siderDrawerVisible: false}})
     }
-)(Siderdrawer);
+)(SiderDrawer);

@@ -3,16 +3,15 @@ import {connect} from 'dva';
 import withRouter from 'umi/withRouter';
 import Redirect from 'umi/redirect';
 import {Icon, Menu, Dropdown, Avatar, Badge} from 'antd';
-import distinctArrayPush from "../../../../utils/distinctArrayPush";
-import {getMenuKeyMapFromPathName} from "../../../../utils/parseLocation";
-import ThemeSwitcher from "./components/ThemeSwitcher";
-import GoCMDBIcon from "../../../../../public/icons";
-import headImg from '../../../../../public/logo.svg';
-import ItisMe from './components/ItisMe';
+import distinctArrayPush from "../../../../../utils/distinctArrayPush";
+import {getMenuKeyMapFromPathName} from "../../../../../utils/parseLocation";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import headImg from '../../../../../../public/logo.svg';
+import ItisMe from '../components/ItisMe';
 
-import styles from './rightContent.less';
-import loadLocalStory from "../../../../utils/loadLocalStory";
-import MyBadge from "./components/MyBadge";
+import styles from './index.less';
+import loadLocalStory from "../../../../../utils/loadLocalStory";
+import MyBadge from "../components/MyBadge";
 
 
 @connect(
@@ -156,4 +155,4 @@ class RightContent extends Component {
 }
 
 
-export default connect()(RightContent);
+export default RightContent;

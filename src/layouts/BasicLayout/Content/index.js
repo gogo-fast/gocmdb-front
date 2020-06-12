@@ -6,7 +6,7 @@ import styles from "./index.less";
 
 const {Content} = Layout;
 
-
+// the components under src/pages will automatic inject into <Layout.Content /> by umi
 export default class MainContent extends Component {
     render() {
         return (

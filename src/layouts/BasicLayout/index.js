@@ -39,7 +39,7 @@ class BasicLayout extends Component {
             payload: {
                 menus: recursiveMenus(menuList, userType),
                 openKeys: getMenuKeyMapFromPathName(pathName, "/home").openKeys,
-                selectedKeys:getMenuKeyMapFromPathName(pathName, '/home').selectedKeys,
+                selectedKeys: getMenuKeyMapFromPathName(pathName, '/home').selectedKeys,
             }
         })
     }
@@ -50,7 +50,6 @@ class BasicLayout extends Component {
             <Layout className={styles['main-layout']}>
                 <MySider/>
                 <Layout>
-                    {/*<ConfigDrawer/>*/}
                     <MyHeader/>
                     <MainContent>
                         {this.props.children}
