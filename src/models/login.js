@@ -16,7 +16,9 @@ import loadLocalStory from "../utils/loadLocalStory";
 
 export default {
     namespaces: "login",
-    state: {},
+    state: {
+        currentUser: {},
+    },
 
     effects: {
         * userLogin(action, {call, put}) {
@@ -52,7 +54,7 @@ export default {
             yield put({type: "notification", payload: resp.data});
             if (resp.data.status === 'ok') {
                 // get new user data after update user details, or you will get old data appeared
-                // we could call effects innner the effects.
+                // we could call effects inner the effects.
                 yield put({type: "reloadCurrentUser", payload: action.payload});
             }
         },
@@ -60,7 +62,8 @@ export default {
             const resp = yield call(svcGetUserDetailsById, action.payload);
             let {msg, status} = resp.data;
             if (status === 'ok') {
-                yield put({type: 'storeUserData', payload: resp.data});
+                yield put({type: 'reStoreCurrentUserMem', payload: resp.data});
+                yield put({type: 'reStoreCurrentUserLocal', payload: resp.data});
             } else {
                 message.error(msg)
             }
@@ -77,13 +80,16 @@ export default {
             let {token, user} = data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
-            return null
+            return Object.assign({}, state, {currentUser: user})
         },
-        storeUserData(state, action) {
-            // console.log(action.payload, '@@@@')
-            let {data, msg, status} = action.payload;
+        reStoreCurrentUserMem(state, action) {
+            let {data} = action.payload;
+            return Object.assign({}, state, {currentUser: data})
+        },
+        reStoreCurrentUserLocal(state, action) {
+            let {data} = action.payload;
             localStorage.setItem('user', JSON.stringify(data));
-            return null
+            return Object.assign({}, state, {currentUser: data})
         },
         userLogout(state, action) {
             localStorage.removeItem('token');
@@ -97,7 +103,7 @@ export default {
             } else {
                 message.error(msg)
             }
-            return null
+            return state
         },
     }
 }

@@ -1,5 +1,7 @@
 import {Menu, Icon} from 'antd';
 import Link from 'umi/link';
+import iconStyles from "../commons/iconfonts/icon.css";
+import React from "react";
 // import { Link } from "react-router-dom";
 
 const {SubMenu} = Menu;
@@ -43,9 +45,9 @@ function recursiveMenus(menus, userType) {
                                 key={k}
                                 title={
                                     <span>
-                                  <Icon type={i}/>
-                                  <span>{t}</span>
-                            </span>
+                                        <Icon type={i}/>
+                                        <span>{t}</span>
+                                    </span>
                                 }
                             >
                                 {recursiveMenus(menus, userType)}

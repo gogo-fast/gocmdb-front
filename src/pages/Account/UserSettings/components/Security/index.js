@@ -108,16 +108,25 @@ const SecuritySettingsForm = Form.create({name: 'security_settings_form'})(
 );
 
 
-@connect()
+@connect(
+    ({login}) => ({
+        currentUser: login.currentUser,
+    })
+)
 @withRouter
 class SecuritySettings extends Component {
 
     handleCommit = (values) => {
         const {form} = this.formRef.props;
-        // console.log(values)
         this.props.dispatch({
             type: "login/setPassword",
-            payload: Object.assign({}, loadLocalStory('user'), values),
+            payload: {
+                // userId: currentUser.userId,
+                userId: this.props.currentUser.userId,
+                // currentUserId: currentUser.userId,
+                currentUserId: this.props.currentUser.userId,
+                password: values.password,
+            },
         });
 
         // reset form after action

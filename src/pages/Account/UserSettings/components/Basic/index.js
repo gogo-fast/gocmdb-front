@@ -21,7 +21,7 @@ const {TextArea} = Input;
 const BasicSettingsForm = Form.create({name: 'basic_settings_form'})(
     class extends Component {
         state = {
-            currentUser:  loadLocalStory('user')
+            currentUser: loadLocalStory('user')
         };
 
         render() {
@@ -118,15 +118,24 @@ const BasicSettingsForm = Form.create({name: 'basic_settings_form'})(
 );
 
 
-@connect()
+@connect(
+    ({login}) => ({
+        currentUser: login.currentUser,
+    })
+)
 @withRouter
 class BasicSettings extends Component {
 
     handleCommit = (values) => {
+
         // const {form} = this.formRef.props;
+
         this.props.dispatch({
             type: "login/updateDetails",
-            payload: Object.assign({}, loadLocalStory('user'), values),
+            payload: {
+                userId: this.props.currentUser.userId,
+                details: Object.assign({}, this.props.selfDetails, values),
+            },
         });
 
         // do not reset form after action

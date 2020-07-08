@@ -6,7 +6,7 @@ export default {
             {
                 antd: true,
                 dva: true, // 在这里打开 dva
-            }
+            },
         ],
     ],
     // 路由配置
@@ -46,6 +46,51 @@ export default {
                         }
                     ],
 
+                },
+                {
+                    path: '/cloud/aliyun',
+                    component: './AliCloud',
+                    routes: [
+                        {
+                            path: '/cloud/aliyun/instance/list',
+                            exact: true,
+                            component: './AliCloud/InstanceList',
+                        },
+                        {
+                            // 默认路由不需要path字段
+                            component: './Errors/NotFound',
+                        }
+                    ],
+                },
+                {
+                    path: '/cloud/tencent',
+                    component: './TencentCloud',
+                    routes: [
+                        {
+                            path: '/cloud/tencent/instance/list',
+                            exact: true,
+                            component: './TencentCloud/InstanceList',
+                        },
+                        {
+                            // 默认路由不需要path字段
+                            component: './Errors/NotFound',
+                        }
+                    ],
+                },
+                {
+                    path: '/host',
+                    component: './Host',
+                    routes: [
+                        {
+                            path: '/host/list',
+                            exact: true,
+                            component: './Host/HostList',
+                        },
+                        {
+                            // 默认路由不需要path字段
+                            component: './Errors/NotFound',
+                        }
+                    ],
                 },
                 {
                     path: '/user',

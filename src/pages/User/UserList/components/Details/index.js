@@ -8,7 +8,8 @@ import {
     parseTimeStamp,
 } from '../../../../../utils/parseTime'
 import styles from './index.less'
-import iconStyles from './icon.css'
+import iconStyles from '../../../../../commons/iconfonts/icon.css'
+import loadLocalStory from "../../../../../utils/loadLocalStory";
 
 const {TextArea} = Input;
 
@@ -120,7 +121,11 @@ const UserDetailsForm = Form.create({name: 'user_details_form_modal'})(
     },
 );
 
-@connect()
+@connect(
+    ({login}) => ({
+        currentUser: login.currentUser,
+    })
+)
 class UpdateUserDetailsPage extends React.Component {
     state = {
         visible: false,
@@ -144,11 +149,19 @@ class UpdateUserDetailsPage extends React.Component {
             if (err) {
                 return;
             }
-
-            let {userId} = this.props.selfDetails;
+            // let {userId} = this.props.selfDetails;
+            // console.log(values.userId)
+            // this.props.selfDetails.userId <==> values.userId
             this.props.dispatch({
                 type: "user/updateDetails",
-                payload: values,
+                payload: {
+                    userId: values.userId,
+                    details: Object.assign({}, this.props.selfDetails, values),
+                    // if updated user is login user,
+                    // details of login user in memory and localStory should be update also.
+                    // so currentUserId need here for models.user.updateDetails to call login/reloadCurrentUser
+                    currentUserId: this.props.currentUser.userId,
+                },
             });
 
             // reset form after action
@@ -194,7 +207,9 @@ const UserDetails = (props) => {
                 type: "user/getUserDetails",
                 // this is initialization data of user from user table
                 // (only contain: userId, userName, userType, userStatus)
-                payload: props.record
+                payload: {
+                    userId: props.record.userId,
+                }
             })
         },
         []
@@ -244,9 +259,9 @@ const UserDetails = (props) => {
 };
 
 export default connect(
-    ({user, loading}) => ({
+    ({user, loading, login}) => ({
         userDetails: user.userDetails,
-        loading: loading.models.user
+        loading: loading.models.user,
     })
 )(UserDetails);
 

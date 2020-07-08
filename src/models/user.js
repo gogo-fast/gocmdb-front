@@ -33,34 +33,46 @@ export default {
             }
             yield put({type: "updateUsers", payload: resp.data})
         },
-        * updateStatus(action, {call, put}) {
-            const resp = yield call(svcUpdateUserStatus, action.payload);
-            yield put({type: "notification", payload: resp.data});
-            let {status, msg, data} = resp.data;
-            let {userId, userStatus, pageNum, pageSize} = action.payload;
-            if (status === 'ok') {
-                if (userStatus !== "2") {
-                    const newResp = yield call(svcGetUserById, action.payload);
-                    yield put({type: "updateSingleUser", payload: newResp.data})
-                } else {
-                    const newResp = yield call(svcGetUserList, action.payload);
-                    yield put({type: "updateUsers", payload: newResp.data})
-                }
-            }
-        },
         * updateType(action, {call, put}) {
             const resp = yield call(svcUpdateUserType, action.payload);
             yield put({type: "notification", payload: resp.data});
             let {status, msg, data} = resp.data;
             if (status === 'ok') {
-                let {userId} = action.payload;
+                let {userId, currentUserId} = action.payload;
                 const newResp = yield call(svcGetUserById, action.payload);
-                yield put({type: "updateSingleUser", payload: newResp.data})
+                yield put({type: "updateSingleUser", payload: newResp.data});
+                yield put({type: "getUserDetails", payload: {userId}});
+                // if user updated is login user update reload details of login user.
+                if (userId === currentUserId) {
+                    // here could call functions in other namespaces.
+                    yield put({type: "login/reloadCurrentUser", payload: {userId: currentUserId}})
+                }
+            }
+        },
+        * updateStatus(action, {call, put}) {
+            const resp = yield call(svcUpdateUserStatus, action.payload);
+            yield put({type: "notification", payload: resp.data});
+            let {status, msg, data} = resp.data;
+            let {userId, userStatus, currentUserId} = action.payload;
+            if (status === 'ok') {
+                if (userStatus !== "2") {
+                    const newResp = yield call(svcGetUserById, action.payload);
+                    yield put({type: "updateSingleUser", payload: newResp.data});
+                    yield put({type: "getUserDetails", payload: {userId}});
+                } else {
+                    const newResp = yield call(svcGetUserList, action.payload);
+                    yield put({type: "updateUsers", payload: newResp.data});
+                }
+                // if user updated is login user update reload details of login user.
+                if (userId === currentUserId) {
+                    // here could call functions in other namespaces.
+                    yield put({type: "login/reloadCurrentUser", payload: {userId: currentUserId}})
+                }
             }
         },
         * searchUser(action, {call, put}) {
-            const data = yield call(svcGetUserByName, action.payload);
-            yield put({type: "updateUsers", payload: data.data})
+            const resp = yield call(svcGetUserByName, action.payload);
+            yield put({type: "updateUsers", payload: resp.data})
         },
         * getUserDetails(action, {call, put}) {
             const resp = yield call(svcGetUserDetailsById, action.payload);
@@ -77,6 +89,12 @@ export default {
                 // get new user data after update user details, or you will get old data appeared
                 // we could call effects innner the effects.
                 yield put({type: "getUserDetails", payload: action.payload});
+                // if user updated is login user update reload details of login user.
+                let {userId, currentUserId} = action.payload;
+                if (userId === currentUserId) {
+                    // here could call functions in other namespaces.
+                    yield put({type: "login/reloadCurrentUser", payload: {userId: currentUserId}})
+                }
             }
         },
         * registerUser(action, {call, put}) {
@@ -87,23 +105,27 @@ export default {
 
     reducers: {
         updateUsers(state, action) {
+            let currentPageNum = action.payload.data.currentPageNum;
             return Object.assign({}, state, {
                 users: action.payload.data.users,
                 total: action.payload.data.total,
-                userListPageNum: action.payload.data.currentPageNum,
+                userListPageNum: (currentPageNum === -1) ? state.userListPageNum : currentPageNum,
             })
         },
         updateSingleUser(state, action) {
             let newUsers = [];
-            state.users.forEach(
-                value => {
-                    if (value.userId === action.payload.data.userId) {
-                        newUsers.push(Object.assign(value, action.payload.data))
-                    } else {
-                        newUsers.push(value)
+            let user = action.payload.data.users[0];
+            if (user) {
+                state.users.forEach(
+                    value => {
+                        if (value.userId === user.userId) {
+                            newUsers.push(Object.assign(value, user))
+                        } else {
+                            newUsers.push(value)
+                        }
                     }
-                }
-            );
+                );
+            }
             return Object.assign({}, state, {
                 users: newUsers
             })
@@ -111,12 +133,6 @@ export default {
         storeUserDetails(state, action) {
             let {userId} = action.payload.data;
             let newDetails = {};
-            let currentUser = loadLocalStory('user');
-            if (currentUser && ("userId" in currentUser)) {
-                if (userId === currentUser.userId) {
-                    localStorage.setItem('user', JSON.stringify(action.payload.data))
-                }
-            }
             newDetails[userId] = action.payload.data;
             return Object.assign({}, state, {
                 userDetails: Object.assign({}, state.userDetails, newDetails)

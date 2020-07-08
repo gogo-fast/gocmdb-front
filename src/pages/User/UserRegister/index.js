@@ -11,7 +11,7 @@ import {
 } from 'antd';
 import {connect} from 'dva';
 import styles from './index.less';
-import iconStyles from './icon.css';
+import iconStyles from '../../../commons/iconfonts/icon.css'
 import withRouter from 'umi/withRouter';
 
 
@@ -29,7 +29,6 @@ const UserRegisterForm = Form.create({name: 'user_register_form'})(
         handleConfirmBlur = e => {
             const {value} = e.target;
             this.setState({confirmDirty: this.state.confirmDirty || !!value});
-            console.log(this.state)
         };
 
         compareToFirstPassword = (rule, value, callback) => {
@@ -177,7 +176,7 @@ const UserRegisterForm = Form.create({name: 'user_register_form'})(
                             rules: [
                                 {required: true, message: 'please input address of this user'},
                             ],
-                        })(<TextArea placeholder={'a mysterious country, a mysterious city, a mysterious place, a mysterious house'} rows="1"/>)}
+                        })(<TextArea placeholder={'a mysterious country, a mysterious city, a mysterious place, a mysterious house'} rows="2"/>)}
                     </Form.Item>
 
                     <Form.Item label="Remark">
@@ -193,6 +192,7 @@ const UserRegisterForm = Form.create({name: 'user_register_form'})(
                             Create User
                         </Button>
                     </Form.Item>
+
                 </Form>
             );
         }

@@ -22,15 +22,7 @@ function svcGetUserList(reqData) {
             params: {
                 page: pageNum,
                 size: pageSize,
-                userId: userId
-            }
-        }).then(
-        value => {
-            if (!value.data.data.users) {
-                value.data.data.users = [];
-                return value
-            } else {
-                return value
+                userId: userId,
             }
         }
     )
@@ -41,95 +33,87 @@ function svcGetUserById(reqData) {
     return axios(
         {
             method: "GET",
-            url: `${apiUrl}/user`,
+            url: `${apiUrl}/user/id`,
             params: {
-                userId: userId
+                userId: userId,
             }
+        }
+    ).then(
+        value => {
+            let users = value.data.data;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? 1 : 0,
+                "users": (status === 'ok') ? users : [],
+                "currentPageNum": -1,
+            };
+            return value
         }
     )
 }
 
 function svcGetUserByName(reqData) {
-    // console.log('userName in service:', userName);
-    // console.log('url in service:', `${apiUrl}/user/name?userName=${userName}`);
-    let {userId, userName} = reqData;
+    let {userName} = reqData;
     return axios(
         {
             method: "GET",
-            url: `${apiUrl}/user`,
+            url: `${apiUrl}/user/name`,
             params: {
                 userName: userName,
-                userId: userId
-            }
-        }).then(
-        value => {
-            if (value.data.status === 'ok') {
-                let {msg, status, data} = value.data;
-                return Object.assign({}, {
-                    data: {
-                        msg: msg,
-                        status: status,
-                        data: {
-                            "currentPageNum": 1,
-                            "total": 1,
-                            "users": [data],
-                        }
-                    }
-
-                })
-            } else {
-                let {msg, status, data} = value.data;
-                return Object.assign({}, {
-                    data: {
-                        msg: msg,
-                        status: status,
-                        data: {
-                            "currentPageNum": 1,
-                            "total": 0,
-                            "users": [],
-                        }
-                    }
-                })
             }
         }
-    );
+    ).then(
+        value => {
+            let users = value.data.data;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? 1 : 0,
+                "users": (status === 'ok') ? users : [],
+                "currentPageNum": -1,
+            };
+            return value
+        }
+    )
 }
 
 function svcUpdateUserStatus(reqData) {
+    let {userId, userStatus} = reqData;
     return axios(
         {
             method: "PUT",
             url: `${apiUrl}/user/status`,
             params: {
-                userId: reqData.userId,
+                userId: userId,
             },
-            data: reqData,
+            data: {userStatus: userStatus},
         }
     )
 }
 
 function svcUpdateUserType(reqData) {
+    let {userId, userType} = reqData;
     return axios(
         {
             method: "PUT",
             url: `${apiUrl}/user/type`,
             params: {
-                userId: reqData.userId,
+                userId: userId,
             },
-            data: reqData,
+            data: {userType: userType},
         }
     )
 }
 
 function svcUpdatePassword(reqData) {
+    let {userId, password} = reqData;
     return axios(
         {
             method: "PUT",
             url: `${apiUrl}/user/password`,
             params: {
-                userId: reqData.userId,
+                userId: userId,
             },
-            data: reqData,
+            data: {password: password},
         }
     )
 }
@@ -141,22 +125,22 @@ function svcGetUserDetailsById(reqData) {
             method: "GET",
             url: `${apiUrl}/user/detail`,
             params: {
-                userId: userId
+                userId: userId,
             }
         }
     )
 }
 
 function svcUpdateUserDetails(reqData) {
-    let {userId} = reqData;
+    let {userId, details} = reqData;
     return axios(
         {
             method: "PUT",
             url: `${apiUrl}/user/detail`,
             params: {
-                userId: userId
+                userId: userId,
             },
-            data: reqData
+            data: details,
         }
     )
 }
@@ -169,14 +153,15 @@ function svcRegisterUser(reqData) {
 }
 
 function svcUploadAvatar(reqData) {
+    let {userId, file} = reqData;
     let formData = new FormData();
-    formData.append("file", reqData.file);
+    formData.append("file", file);
     return axios(
         {
             method: "POST",
             url: `${apiUrl}/user/avatar`,
             params: {
-                userId: reqData.userId,
+                userId: userId,
             },
             data: formData,
         }

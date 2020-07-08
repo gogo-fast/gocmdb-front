@@ -21,10 +21,11 @@ import {
     getMenuKeyMapFromKeyPath,
 } from "../../../utils/parseLocation";
 import loadLocalStory from "../../../utils/loadLocalStory";
+import distinctArrayPush from "../../../utils/distinctArrayPush";
 
 
 @connect(
-    ({user, layout, login, loading}) => ({
+    ({user, loading, layout, login}) => ({
         users: user.users,
         total: user.total,
         loading: loading.models.user,
@@ -36,15 +37,10 @@ import loadLocalStory from "../../../utils/loadLocalStory";
 class UserList extends Component {
 
     actionFunc = (pageNum, pageSize) => {
-        let currentUser = loadLocalStory('user');
-        if (!("userId" in currentUser)) {
-            return
-        }
         this.props.dispatch(
             {
                 type: "user/loadUsers",
                 payload: {
-                    userId: currentUser.userId,
                     pageNum: pageNum,
                     pageSize: pageSize,
                 }
@@ -66,14 +62,6 @@ class UserList extends Component {
         // do not use this.props.pageNum and this.props.pageSize
         // because they are still old values.
         this.actionFunc(pageNum, pageSize);
-
-        let pathName = this.props.location.pathname;
-        this.props.dispatch({
-            type: "layout/updateMenuKeys",
-            payload: {
-                selectedKeys: getMenuKeyMapFromPathName(pathName, "/home").selectedKeys,
-            }
-        })
     }
 
     getUrl = (pageNum, pageSize) => {
@@ -99,6 +87,8 @@ class UserList extends Component {
                 userListPageSize: pageSize,
             }
         });
+        // change uri while page size changed
+        this.props.history.replace(this.getUrl(pageNum, pageSize));
         this.actionFunc(pageNum, pageSize);
     };
 
@@ -161,38 +151,37 @@ class UserList extends Component {
             'userName': 'User Name'
         };
         let columns = [];
-        let firstRecord = this.props.users[0];
-        for (let k in firstRecord) {
-            if (k === "key") continue;
-            let column = {};
-            column.align = 'center';
-            column.title = colMap[k];
-            column.dataIndex = k;
-            column.key = k;
-            if (k === 'userType') {
-                column.render = userType => {
-                    if (userType === '0') {
-                        return (<Tag color={'green'}>Admin</Tag>);
-                    } else if (userType === '1') {
-                        return (<Tag color={'geekblue'}>User</Tag>);
+        if (this.props.users.length > 0) {
+            let firstRecord = this.props.users[0];
+            for (let k in firstRecord) {
+                if (k === "key") continue;
+                let column = {};
+                column.align = 'center';
+                column.title = colMap[k];
+                column.dataIndex = k;
+                column.key = k;
+                if (k === 'userType') {
+                    column.render = userType => {
+                        if (userType === '0') {
+                            return (<Tag color={'green'}>Admin</Tag>);
+                        } else if (userType === '1') {
+                            return (<Tag color={'geekblue'}>User</Tag>);
+                        }
                     }
                 }
-            }
-            if (k === 'userStatus') {
-                column.render = userStatus => {
-                    if (userStatus === '0') {
-                        return (<Tag color={'green'}>Enable</Tag>);
-                    } else if (userStatus === '1') {
-                        return (<Tag color={'#8c8c8c'}>Disabled</Tag>);
-                    } else if (userStatus === '2') {
-                        return (<Tag color={'#000000'}>Deleted</Tag>);
+                if (k === 'userStatus') {
+                    column.render = userStatus => {
+                        if (userStatus === '0') {
+                            return (<Tag color={'green'}>Enable</Tag>);
+                        } else if (userStatus === '1') {
+                            return (<Tag color={'#8c8c8c'}>Disabled</Tag>);
+                        } else if (userStatus === '2') {
+                            return (<Tag color={'#000000'}>Deleted</Tag>);
+                        }
                     }
                 }
+                columns.push(column)
             }
-            if (k === 'userId') {
-                column.width = '70px'
-            }
-            columns.push(column)
         }
 
         if (columns.length !== 0) {

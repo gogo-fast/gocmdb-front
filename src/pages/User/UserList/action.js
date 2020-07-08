@@ -10,6 +10,7 @@ import {
     Radio,
 } from 'antd';
 import {parseSearch} from "../../../utils/parseSearch";
+import loadLocalStory from "../../../utils/loadLocalStory";
 
 
 const UserStatusForm = Form.create({name: 'user_status_form_modal'})(
@@ -81,7 +82,11 @@ const UserTypeForm = Form.create({name: 'user_type_form_modal'})(
 );
 
 
-@connect()
+@connect(
+    ({login}) => ({
+        currentUser: login.currentUser,
+    })
+)
 class UpdateUserTypePage extends React.Component {
     state = {
         visible: false,
@@ -92,6 +97,9 @@ class UpdateUserTypePage extends React.Component {
     };
 
     handleCancel = () => {
+        const {form} = this.formRef.props;
+        // reset form after action
+        form.resetFields();
         this.setState({visible: false});
     };
 
@@ -108,6 +116,10 @@ class UpdateUserTypePage extends React.Component {
                 payload: {
                     userId: userId,
                     userType: values.userType,
+                    // if updated user is login user,
+                    // details of login user in memory and localStory should be update also.
+                    // so currentUserId need here for models.user.updateType to call login/reloadCurrentUser
+                    currentUserId: this.props.currentUser.userId,
                 }
             });
 
@@ -142,7 +154,11 @@ class UpdateUserTypePage extends React.Component {
 }
 
 
-@connect()
+@connect(
+    ({login}) => ({
+        currentUser: login.currentUser
+    })
+)
 @withRouter
 class UpdateUserStatusPage extends Component {
     state = {
@@ -154,6 +170,9 @@ class UpdateUserStatusPage extends Component {
     };
 
     handleCancel = () => {
+        const {form} = this.formRef.props;
+        // reset form after action
+        form.resetFields();
         this.setState({visible: false});
     };
 
@@ -177,7 +196,10 @@ class UpdateUserStatusPage extends Component {
                     pageSize: size,
                     userId: userId,
                     userStatus: values.userStatus,
-                    // userStatus: parseInt(values.userStatus),
+                    // if updated user is login user,
+                    // details of login user in memory and localStory should be update also.
+                    // so currentUserId need here for models.user.updateStatus to call login/reloadCurrentUser
+                    currentUserId: this.props.currentUser.userId,
                 }
             });
 

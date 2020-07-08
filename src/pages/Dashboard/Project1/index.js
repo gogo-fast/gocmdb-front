@@ -1,12 +1,12 @@
 import Dashboard from "../index";
-
+import Cpu from "./components/CPU";
 import styles from './index.less'
 
 
 const Project = (props) => (
     <div className={styles.normal}>
         <Dashboard>
-            <p>this is dashboard of project 1</p>
+            <Cpu />
         </Dashboard>
     </div>
 
@@ -14,4 +14,5 @@ const Project = (props) => (
 
 
 export default Project
+
 

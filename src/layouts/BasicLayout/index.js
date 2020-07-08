@@ -25,6 +25,15 @@ class BasicLayout extends Component {
 
     // initialize side menus and theme before mounting the react node.
     componentWillMount() {
+        let currentUser = loadLocalStory('user');
+        if (!currentUser || !("userId" in currentUser)) {
+            return
+        }
+        this.props.dispatch({
+            type: "login/reStoreCurrentUserMem",
+            payload: {data: currentUser}
+        });
+
         var currentThemeData = {};
         currentThemeData = loadTheme();
         this.props.dispatch({

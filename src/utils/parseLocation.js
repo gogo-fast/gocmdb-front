@@ -22,8 +22,8 @@ function getMenuKeyMapFromPathName(path, defaultPath) {
         keyMap['openKeys'] = [defaultPath];
         keyMap['selectedKeys'] = [defaultPath]
     } else {
-        keyMap['openKeys'] = keys.slice(keys.length - 1);
-        keyMap['selectedKeys'] = keys.slice(0, keys.length - 1)
+        keyMap['openKeys'] = keys.slice(1, keys.length);
+        keyMap['selectedKeys'] = keys.slice(0,1)
     }
     return keyMap
 }

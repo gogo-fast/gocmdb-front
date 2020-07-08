@@ -1,11 +1,12 @@
 import moment from 'moment';
 import 'moment/locale/zh-cn';
+
 moment.locale('zh-cn');
 
 
 // http://momentjs.cn/docs/#/parsing/
-const dayTimeFromat = 'YYYY-MM-DDTHH:mm:ss+HH:mm';
-const timeStampFormat = 'YYYY-MM-DDTHH:mm:ss.SSS+HH:mm';
+const dayTimeFromat = 'YYYY-MM-DDTHH:mm:ss';  // +HH:mm
+const timeStampFormat = 'YYYY-MM-DDTHH:mm:ss.SSS';  //+HH:mm
 
 function formatDayTime(s) {
     let m = moment(s, dayTimeFromat);
@@ -42,7 +43,6 @@ function parseTimeStamp(s) {
         return null
     }
 }
-
 
 
 export {

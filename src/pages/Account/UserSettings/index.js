@@ -19,7 +19,6 @@ class UserSettings extends Component {
     //     console.log(key);
     // };
 
-
     render() {
         return (
             <Account>

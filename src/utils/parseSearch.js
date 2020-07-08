@@ -3,13 +3,12 @@ function parseSearch(searchStr) {
     let paramStrs = searchStr.trim().substring(1).split('&');
     paramStrs.forEach(
         value => {
-            let _tmp = value.split('=');
-            params[_tmp[0]] = _tmp[1]
+            let _tmp = value.trim().split('=');
+            params[_tmp[0].trim()] = (_tmp.length >1) ?  _tmp[1].trim() : ''
         }
     );
     return params
 }
-
 
 const numRe = /^\d+/;
 

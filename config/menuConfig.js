@@ -29,7 +29,60 @@ const menuList = [
         ]
     },
     {
-        title: 'User Management',
+        title: 'Cloud',
+        key: '/cloud',
+        icon: 'cloud',
+        roles: ['admin', 'user'],
+        menus: [
+            {
+                title: 'AliCloud',
+                key: '/cloud/aliyun',
+                icon: 'aliyun',
+                roles: ['admin', 'user'],
+                menus: [
+                    {
+                        title: 'Instances',
+                        key: '/cloud/aliyun/instance/list',
+                        icon: 'unordered-list',
+                        url: '/cloud/aliyun/instance/list',
+                        roles: ['admin', 'user']
+                    },
+                ]
+            },
+            {
+                title: 'TencentCloud',
+                key: '/cloud/tencent',
+                icon: 'qq',
+                roles: ['admin', 'user'],
+                menus: [
+                    {
+                        title: 'Instances',
+                        key: '/cloud/tencent/instance/list',
+                        icon: 'unordered-list',
+                        url: '/cloud/tencent/instance/list',
+                        roles: ['admin', 'user']
+                    },
+                ]
+            },
+        ]
+    },
+    {
+        title: 'Resource Manager',
+        key: '/host',
+        icon: 'appstore',
+        roles: ['admin', 'user'],
+        menus: [
+            {
+                title: 'Hosts',
+                key: '/host/list',
+                icon: 'unordered-list',
+                url: '/host/list',
+                roles: ['admin', 'user']
+            },
+        ]
+    },
+    {
+        title: 'User',
         key: '/user',
         icon: 'team',
         roles: ['admin', 'user'],

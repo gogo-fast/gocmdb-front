@@ -22,7 +22,7 @@ class Home extends Component {
         this.props.dispatch({
             type: "layout/updateMenuKeys",
             payload: {
-                selectedKeys:  getMenuKeyMapFromPathName(pathName, "/home").selectedKeys,
+                selectedKeys: getMenuKeyMapFromPathName(pathName, "/home").selectedKeys,
             }
         })
     }
@@ -30,9 +30,9 @@ class Home extends Component {
     render() {
         return (
             <div className={styles['home']}>
-                <p>
+                <span className={styles['text']}>
                     CMDB front side，continue updating ......
-                </p>
+                </span>
             </div>
         );
     }

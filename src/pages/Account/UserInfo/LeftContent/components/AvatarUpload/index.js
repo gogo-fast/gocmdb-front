@@ -19,24 +19,22 @@ function beforeUpload(file) {
 
 
 @connect(
-    ({loading, avatar}) => ({
+    ({loading, avatar, login}) => ({
         loading: loading.models.user,
-        avatarUrl: avatar.avatarUrl
+        avatarUrl: avatar.avatarUrl,
+        currentUser: login.currentUser,
     })
 )
-class MyAvatar extends Component {
+class AvatarUpload extends Component {
 
     uploadFile = (file) => {
-        let currentUser = loadLocalStory('user');
-        if (currentUser && ("userId" in currentUser)) {
-            this.props.dispatch({
-                type: "avatar/uploadAvatar",
-                payload: {
-                    userId: currentUser.userId,
-                    file: file,
-                }
-            })
-        }
+        this.props.dispatch({
+            type: "avatar/uploadAvatar",
+            payload: {
+                userId: this.props.currentUser.userId,
+                file: file,
+            }
+        })
     };
 
     render() {
@@ -57,11 +55,12 @@ class MyAvatar extends Component {
                     action={this.uploadFile}
                     beforeUpload={beforeUpload}
                 >
-                    {this.props.avatarUrl ? <img src={this.props.avatarUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+                    {this.props.avatarUrl ?
+                        <img src={this.props.avatarUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
                 </Upload>
             </div>
         );
     }
 }
 
-export default MyAvatar;
+export default AvatarUpload;

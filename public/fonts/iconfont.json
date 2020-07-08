@@ -6,6 +6,356 @@
   "description": "cmdb 前端图标",
   "glyphs": [
     {
+      "icon_id": "1647993",
+      "name": "印度",
+      "font_class": "yindu",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "3072480",
+      "name": "英国国旗",
+      "font_class": "yingguoguoqi",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "3178721",
+      "name": "日本 JPN",
+      "font_class": "ribenJPN",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "4240656",
+      "name": "德国国旗",
+      "font_class": "deguoguoqi",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "5301272",
+      "name": "澳大利亚国旗",
+      "font_class": "aodaliyaguoqi",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "5810798",
+      "name": "法国旗",
+      "font_class": "faguoqi",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "5810800",
+      "name": "美国旗",
+      "font_class": "meiguoqi",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "7049842",
+      "name": "德国",
+      "font_class": "deguo",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "7698678",
+      "name": "马来西亚",
+      "font_class": "malaixiya",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "7698748",
+      "name": "马来西亚",
+      "font_class": "malaixiya1",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "7974367",
+      "name": "德国",
+      "font_class": "deguo1",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "8576221",
+      "name": "法国国旗",
+      "font_class": "faguoguoqi",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "8701861",
+      "name": "国旗-英国",
+      "font_class": "tc-gq-yg",
+      "unicode": "e82b",
+      "unicode_decimal": 59435
+    },
+    {
+      "icon_id": "8746736",
+      "name": "国旗",
+      "font_class": "weibiaoti-",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "8904357",
+      "name": "国旗",
+      "font_class": "guoqi",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "9081805",
+      "name": "德国",
+      "font_class": "deguo2",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "9138863",
+      "name": "国旗",
+      "font_class": "guoqi1",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "9366114",
+      "name": "印度国旗",
+      "font_class": "yinduguoqi",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "10309682",
+      "name": "印度-01",
+      "font_class": "yindu-",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "11158703",
+      "name": "国旗",
+      "font_class": "guoqi2",
+      "unicode": "e6b7",
+      "unicode_decimal": 59063
+    },
+    {
+      "icon_id": "11218248",
+      "name": "美国国旗",
+      "font_class": "meiguoguoqi",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "11498870",
+      "name": "新加坡",
+      "font_class": "xinjiapo",
+      "unicode": "e956",
+      "unicode_decimal": 59734
+    },
+    {
+      "icon_id": "12534259",
+      "name": "国家logo-阿联酋",
+      "font_class": "guojialogo-alianqiu",
+      "unicode": "e9a5",
+      "unicode_decimal": 59813
+    },
+    {
+      "icon_id": "12805022",
+      "name": "ic_顶栏_阿联酋",
+      "font_class": "ic_dinglan_alianqiu",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "13940656",
+      "name": "日本国旗",
+      "font_class": "flag-jp",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "13940668",
+      "name": "澳大利亚国旗",
+      "font_class": "flag-au",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "14005916",
+      "name": "新加坡",
+      "font_class": "xinjiapo1",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "14957840",
+      "name": "英国 旗帜",
+      "font_class": "yingguoqizhi",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "4541496",
+      "name": "cpu",
+      "font_class": "cpu",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "5714098",
+      "name": "cpu",
+      "font_class": "cpu1",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "6598789",
+      "name": "cpu",
+      "font_class": "cpu2",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "10692218",
+      "name": "CPU",
+      "font_class": "CPU",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "10721095",
+      "name": "CPU",
+      "font_class": "CPU1",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "10852233",
+      "name": "cpu",
+      "font_class": "cpu3",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "13313237",
+      "name": "CPU",
+      "font_class": "cpu11",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "2825586",
+      "name": "server",
+      "font_class": "server",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "4038927",
+      "name": "server",
+      "font_class": "server1",
+      "unicode": "e72f",
+      "unicode_decimal": 59183
+    },
+    {
+      "icon_id": "7458035",
+      "name": "Server",
+      "font_class": "Server",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "11160954",
+      "name": "server",
+      "font_class": "server2",
+      "unicode": "e82a",
+      "unicode_decimal": 59434
+    },
+    {
+      "icon_id": "11706894",
+      "name": "server",
+      "font_class": "server3",
+      "unicode": "e772",
+      "unicode_decimal": 59250
+    },
+    {
+      "icon_id": "12005071",
+      "name": "Server",
+      "font_class": "Server1",
+      "unicode": "eab8",
+      "unicode_decimal": 60088
+    },
+    {
+      "icon_id": "12237538",
+      "name": "Server",
+      "font_class": "Server2",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "13561734",
+      "name": "server",
+      "font_class": "server4",
+      "unicode": "e877",
+      "unicode_decimal": 59511
+    },
+    {
+      "icon_id": "14531447",
+      "name": "server",
+      "font_class": "server5",
+      "unicode": "f417",
+      "unicode_decimal": 62487
+    },
+    {
+      "icon_id": "1385754",
+      "name": "icon2_cloud platform",
+      "font_class": "icon_cloudplatform",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "2836277",
+      "name": "Cloud server",
+      "font_class": "Cloudserver-",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "4054796",
+      "name": "tencent",
+      "font_class": "tencent",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "5072054",
+      "name": "cloud computing2",
+      "font_class": "cloudcomputing",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "9000755",
+      "name": "wd-accent-cloud-platform",
+      "font_class": "wd-accent-cloud-platform",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "12186878",
+      "name": "Tencent cloud",
+      "font_class": "ziyuan1",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
       "icon_id": "662771",
       "name": "disabled",
       "font_class": "iconfontjinzhi",
