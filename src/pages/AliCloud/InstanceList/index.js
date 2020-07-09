@@ -4,7 +4,6 @@ import {
     Table,
     Tag,
     Icon,
-    Progress,
     Badge,
     Spin,
 } from 'antd';
@@ -15,15 +14,15 @@ import withRouter from 'umi/withRouter'
 import AliCloud from "../index";
 import {parseSearch, validPageSize, validPageNum} from "../../../utils/parseSearch";
 import renderAction from "./action";
-import TableTitle from "./components/TableTitle";
 import {
     apiWsUrl,
     pageSizeOptions
 } from '../../../utils/constants'
 
-
-import loadLocalStory from "../../../utils/loadLocalStory";
 import InstanceDetails from "./components/InstanceDetails";
+import InstanceListPageHeader from "./components/InstanceListPageHeader";
+
+import styles from './index.less';
 import iconStyles from "../../../commons/iconfonts/icon.css";
 
 const colMap = {
@@ -216,12 +215,6 @@ class InstanceList extends Component {
             );
     };
 
-    titleFunc = () => {
-        return (
-            <TableTitle/>
-        )
-    };
-
     expandedRowRender = (record, index, indent, expanded) => {
         let c;
         for (let i in this.props.instances) {
@@ -253,17 +246,17 @@ class InstanceList extends Component {
             if (k === 'Status') {
                 column.render = Status => {
                     if (Status === 'Pending') {
-                        return (<Tag color={'#b37feb'}>Running</Tag>);
+                        return (<Tag color={'#722ed1'}>Pending</Tag>);
                     } else if (Status === 'Running') {
-                        return (<Tag color={'#7cb305'}>Running</Tag>);
+                        return (<Tag color={'#237804'}>Running</Tag>);
                     } else if (Status === 'Starting') {
-                        return (<Tag color={'#5cdbd3'}>Starting</Tag>);
+                        return (<Tag color={'#a0d911'}>Starting</Tag>);
                     } else if (Status === 'Stopping') {
-                        return (<Tag color={'#faad14'}>Stopping</Tag>);
+                        return (<Tag color={'#d4b106'}>Stopping</Tag>);
                     } else if (Status === 'Stopped') {
-                        return (<Tag color={'#5c0011'}>Stopped</Tag>);
+                        return (<Tag color={'#876800'}>Stopped</Tag>);
                     } else {
-                        return (<Tag color={'#595959'}>Unknown</Tag>);
+                        return (<Tag color={'#8c8c8c'}>Unknown</Tag>);
                     }
                 };
             }
@@ -313,28 +306,30 @@ class InstanceList extends Component {
 
         return (
             <AliCloud>
-                <Table
-                    bordered
-                    size="small"
-                    title={this.titleFunc}
-                    columns={(this.props.instances && this.props.instances.length !== 0) ? columns : null}
-                    dataSource={instanceList}
-                    loading={this.props.loading}
-                    pagination={{
-                        total: this.props.total,
-                        pageSize: this.props.pageSize,
-                        current: this.props.pageNum,
-                        // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
-                        pageSizeOptions: pageSizeOptions,
-                        showSizeChanger: true,
-                        onShowSizeChange: this.onShowSizeChange,
-                        onChange: this.pageChange,
-                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} hosts`,
-                        itemRender: this.itemRender
-                    }}
-                    expandedRowRender={this.expandedRowRender}
-                >
-                </Table>
+                <InstanceListPageHeader />
+                <div className={styles.container}>
+                    <Table
+                        bordered
+                        size="small"
+                        columns={(this.props.instances && this.props.instances.length !== 0) ? columns : null}
+                        dataSource={instanceList}
+                        loading={this.props.loading}
+                        pagination={{
+                            total: this.props.total,
+                            pageSize: this.props.pageSize,
+                            current: this.props.pageNum,
+                            // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
+                            pageSizeOptions: pageSizeOptions,
+                            showSizeChanger: true,
+                            onShowSizeChange: this.onShowSizeChange,
+                            onChange: this.pageChange,
+                            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} hosts`,
+                            itemRender: this.itemRender
+                        }}
+                        expandedRowRender={this.expandedRowRender}
+                    >
+                    </Table>
+                </div>
             </AliCloud>
         )
     }

@@ -11,17 +11,13 @@ import withRouter from 'umi/withRouter'
 import User from "../index";
 import {parseSearch, validPageSize, validPageNum} from "../../../utils/parseSearch";
 import renderAction from "./action";
-import TableTitle from "./components/TableTitle";
 import {
     pageSizeOptions
 } from '../../../utils/constants'
 import UserDetails from "./components/Details";
-import {
-    getMenuKeyMapFromPathName,
-    getMenuKeyMapFromKeyPath,
-} from "../../../utils/parseLocation";
-import loadLocalStory from "../../../utils/loadLocalStory";
-import distinctArrayPush from "../../../utils/distinctArrayPush";
+import UserListPageHeader from "./components/UserListPageHeader";
+
+import styles from './index.less'
 
 
 @connect(
@@ -131,12 +127,6 @@ class UserList extends Component {
             return <Link to={this.getUrl(page, this.props.pageSize)}>{page}</Link>;
     };
 
-    titleFunc = () => {
-        return (
-            <TableTitle/>
-        )
-    };
-
     expandedRowRender = (record, index, indent, expanded) => {
         return (
             <UserDetails record={record}/>
@@ -196,29 +186,33 @@ class UserList extends Component {
 
         return (
             <User>
-                <Table
-                    bordered
-                    size="small"
-                    title={this.titleFunc}
-                    columns={columns}
-                    dataSource={this.props.users}
-                    loading={this.props.loading}
-                    pagination={{
-                        total: this.props.total,
-                        pageSize: this.props.pageSize,
-                        current: this.props.pageNum,
-                        // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
-                        pageSizeOptions: pageSizeOptions,
-                        showSizeChanger: true,
-                        onShowSizeChange: this.onShowSizeChange,
-                        onChange: this.pageChange,
-                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} users`,
-                        itemRender: this.itemRender
-                    }}
-                    expandedRowRender={this.expandedRowRender}
-                >
-                </Table>
+                <UserListPageHeader/>
+                <div className={styles.container}>
+                    <Table
+                        bordered
+                        size="small"
+                        columns={columns}
+                        dataSource={this.props.users}
+                        loading={this.props.loading}
+                        pagination={{
+                            total: this.props.total,
+                            pageSize: this.props.pageSize,
+                            current: this.props.pageNum,
+                            // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
+                            pageSizeOptions: pageSizeOptions,
+                            showSizeChanger: true,
+                            onShowSizeChange: this.onShowSizeChange,
+                            onChange: this.pageChange,
+                            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} users`,
+                            itemRender: this.itemRender
+                        }}
+                        expandedRowRender={this.expandedRowRender}
+                    >
+                    </Table>
+                </div>
             </User>
+
+
         )
     }
 }

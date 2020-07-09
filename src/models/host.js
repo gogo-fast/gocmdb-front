@@ -4,6 +4,8 @@ import {
 import {
     svcGetHostList,
     svcGetHostByUUID,
+    svcStartHost,
+    svcRebootHost,
     svcStopHost,
     svcDeleteHost,
 } from "../services/host";
@@ -31,6 +33,14 @@ export default {
             const resp = yield call(svcGetHostByUUID, action.payload);
             yield put({type: "updateHosts", payload: resp.data})
         },
+        * startHost(action, {call, put}) {
+            const resp = yield call(svcStartHost, action.payload);
+            // yield put({type: "notification", payload: resp.data});
+        },
+        * rebootHost(action, {call, put}) {
+            const resp = yield call(svcRebootHost, action.payload);
+            // yield put({type: "notification", payload: resp.data});
+        },
         * stopHost(action, {call, put}) {
             const resp = yield call(svcStopHost, action.payload);
             yield put({type: "notification", payload: resp.data});
@@ -49,7 +59,6 @@ export default {
     reducers: {
         updateHosts(state, action) {
             let currentPageNum = action.payload.data.currentPageNum;
-            console.log("currentPageNum", currentPageNum)
             return Object.assign({}, state, {
                 hosts: action.payload.data.hosts,
                 total: action.payload.data.total,

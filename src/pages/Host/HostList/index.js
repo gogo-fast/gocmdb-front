@@ -13,18 +13,14 @@ import withRouter from 'umi/withRouter'
 import Host from "../index";
 import {parseSearch, validPageSize, validPageNum} from "../../../utils/parseSearch";
 import renderAction from "./action";
-import TableTitle from "./components/TableTitle";
 import {
     pageSizeOptions
 } from '../../../utils/constants'
 
-import {
-    getMenuKeyMapFromPathName,
-    getMenuKeyMapFromKeyPath,
-} from "../../../utils/parseLocation";
-import loadLocalStory from "../../../utils/loadLocalStory";
 import HostDetails from "./components/Details";
+import HostListPageHeader from "./components/HostListPageHeader";
 import iconStyles from "../../../commons/iconfonts/icon.css";
+import styles from './index.less';
 
 @connect(
     ({host, loading}) => ({
@@ -149,12 +145,6 @@ class HostList extends Component {
             return <Link to={this.getUrl(page, this.props.pageSize)}>{page}</Link>;
     };
 
-    titleFunc = () => {
-        return (
-            <TableTitle/>
-        )
-    };
-
     expandedRowRender = (record, index, indent, expanded) => {
         return (
             <HostDetails record_uuid={record.uuid}/>
@@ -267,28 +257,30 @@ class HostList extends Component {
 
         return (
             <Host>
-                <Table
-                    bordered
-                    size="small"
-                    title={this.titleFunc}
-                    columns={this.props.hosts.length !== 0 ? columns : null}
-                    dataSource={hostList}
-                    loading={this.props.loading}
-                    pagination={{
-                        total: this.props.total,
-                        pageSize: this.props.pageSize,
-                        current: this.props.pageNum,
-                        // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
-                        pageSizeOptions: pageSizeOptions,
-                        showSizeChanger: true,
-                        onShowSizeChange: this.onShowSizeChange,
-                        onChange: this.pageChange,
-                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} hosts`,
-                        itemRender: this.itemRender
-                    }}
-                    expandedRowRender={this.expandedRowRender}
-                >
-                </Table>
+                <HostListPageHeader/>
+                <div className={styles.container}>
+                    <Table
+                        bordered
+                        size="small"
+                        columns={this.props.hosts.length !== 0 ? columns : null}
+                        dataSource={hostList}
+                        loading={this.props.loading}
+                        pagination={{
+                            total: this.props.total,
+                            pageSize: this.props.pageSize,
+                            current: this.props.pageNum,
+                            // defaultCurrent: this.props.pageNum,  // we'd better use current other than defaultCurrent
+                            pageSizeOptions: pageSizeOptions,
+                            showSizeChanger: true,
+                            onShowSizeChange: this.onShowSizeChange,
+                            onChange: this.pageChange,
+                            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} hosts`,
+                            itemRender: this.itemRender
+                        }}
+                        expandedRowRender={this.expandedRowRender}
+                    >
+                    </Table>
+                </div>
             </Host>
         )
     }

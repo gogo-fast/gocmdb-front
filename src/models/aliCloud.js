@@ -14,7 +14,7 @@ import {
     message
 } from 'antd';
 import {apiWsUrl} from "../utils/constants";
-import aliyunRegionMap from "../../config/regionConfig";
+import aliyunRegionMap from "../../config/aliyunRegionConfig";
 
 export default {
     namespaces: "aliCloud",

@@ -67,7 +67,9 @@ class StopInstance extends Component {
                 cancelText="No"
                 placement="bottomRight"
             >
-                <Button icon={"poweroff"} style={{background: '#fadb14', width: '28px', height: '28px'}} size='small'/>
+                <span>
+                    <Icon style={{color: "#d46b08"}} type="poweroff"/> Stop
+                </span>
             </Popconfirm>
         )
     }

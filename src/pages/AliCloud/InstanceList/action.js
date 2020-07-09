@@ -1,17 +1,13 @@
-import {connect} from 'dva'
 import React, {Component} from 'react';
-import withRouter from 'umi/withRouter'
 import {
-    Divider,
-    notification,
-    message,
+    Menu,
+    Dropdown,
+    Icon,
 } from 'antd';
-import {parseSearch} from "../../../utils/parseSearch";
-import loadLocalStory from "../../../utils/loadLocalStory";
 import DeleteInstance from "./components/DeleteInstance";
 import StopInstance from "./components/StopInstance";
 import StartInstance from "./components/StartInstance";
-
+import RebootInstance from "./components/RebootInstance";
 
 const renderAction = (columns) => {
     columns.push({
@@ -21,13 +17,30 @@ const renderAction = (columns) => {
             key: 'x',
             render: (record) => {
                 return (
-                    <span>
-                        <StartInstance record={record}/>
-                        <Divider type="vertical"/>
-                        <StopInstance record={record}/>
-                        <Divider type="vertical"/>
-                        <DeleteInstance record={record}/>
-                    </span>
+                    <Dropdown
+                        size={"small"}
+                        overlay={
+                            <Menu>
+                                <Menu.Item>
+                                    <StartInstance record={record}/>
+                                </Menu.Item>
+                                <Menu.Item>
+                                    <StopInstance record={record}/>
+                                </Menu.Item>
+                                <Menu.Item>
+                                    <RebootInstance record={record}/>
+                                </Menu.Item>
+                                <Menu.Item>
+                                    <DeleteInstance record={record}/>
+                                </Menu.Item>
+                            </Menu>
+                        }
+                        placement="bottomRight"
+                    >
+                        <a className="ant-dropdown-link">
+                            <Icon type="menu"/> Mgr
+                        </a>
+                    </Dropdown>
                 )
             }
         }

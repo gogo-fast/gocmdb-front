@@ -67,7 +67,9 @@ class DeleteInstance extends Component {
                 cancelText="No"
                 placement="bottomRight"
             >
-                <Button icon={"delete"} style={{background: '#ff7a45', width: '28px', height: '28px'}} size='small'/>
+                <span>
+                    <Icon style={{color: '#a8071a'}} type="delete"/> Delete
+                </span>
             </Popconfirm>
         )
     }

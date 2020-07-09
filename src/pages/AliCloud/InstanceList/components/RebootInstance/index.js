@@ -30,7 +30,7 @@ const openNotificationWithIcon = (msg, desc) => {
     })
 )
 @withRouter
-class StartInstance extends Component {
+class RebootInstance extends Component {
 
     handleConfirm = () => {
         if (this.props.record && 'InstanceId' in this.props.record) {
@@ -38,7 +38,7 @@ class StartInstance extends Component {
             if (Status !== "Running") {
                 openNotificationWithIcon(
                     `can not reboot instance [${InstanceId}]`,
-                    `only instance [Running] can be reboot`
+                    `only instance not [Running] can be reboot`
                 );
                 return
             }
@@ -67,12 +67,13 @@ class StartInstance extends Component {
                 cancelText="No"
                 placement="bottomRight"
             >
-                <Button icon={"reload"} style={{background: '#a0d911', width: '28px', height: '28px'}}
-                        size='small'/>
+                <span>
+                    <Icon style={{color: "#722ed1"}} type="reload"/> Reboot
+                </span>
             </Popconfirm>
         )
     }
 }
 
 
-export default StartInstance;
+export default RebootInstance;

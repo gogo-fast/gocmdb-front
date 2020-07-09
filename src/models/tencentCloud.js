@@ -9,11 +9,11 @@ import {
 import {apiWsUrl} from "../utils/constants";
 
 
-
 export default {
-    namespaces: "tencent",
+    namespaces: "tencentCloud",
     state: {
-        platForm: "tencent",
+        regions: [],
+        defaultRegionId: "ap-beijing",
         sgs: [],
         instances: [],
         total: 0,
@@ -70,26 +70,5 @@ export default {
             return Object.assign({}, state, {instancesWs: action.payload.ws})
         }
     },
-    subscriptions: {
-        loadInstancesPage({dispatch, history}) {
-            return history.listen(
-                // callback while pathname or query string change
-                ({pathname, query}) => {
-                    if (pathname === '/cloud/instance/list') {
-                        let searchStr = history.location.search;
-                        console.log(`${apiWsUrl}/cloud/ws/instance/list`);
-                        const ws = new WebSocket(`${apiWsUrl}/cloud/ws/instance/list${searchStr}`);
-                        dispatch({
-                            type: "updateInstanceWebSocket",
-                            payload: {ws: ws}
-                        });
-                        ws.onmessage = msgEv => dispatch({
-                            type: "updateInstances",
-                            payload: JSON.parse(msgEv.data),
-                        });
-                    }
-                }
-            )
-        }
-    }
+    subscriptions: {}
 }

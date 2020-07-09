@@ -1,5 +1,8 @@
 import React, {Component, useEffect} from 'react';
 import {
+    Icon,
+    Row,
+    Col,
     Modal,
     DatePicker,
     Form,
@@ -14,6 +17,8 @@ import styles from './index.less';
 import iconStyles from '../../../commons/iconfonts/icon.css'
 import withRouter from 'umi/withRouter';
 
+import UserRegisterPageHeader from "./components/UserRegisterPageHeader";
+import Account from "../../Account";
 
 const {confirm} = Modal;
 const {TextArea} = Input;
@@ -52,147 +57,144 @@ const UserRegisterForm = Form.create({name: 'user_register_form'})(
         render() {
             const {form} = this.props;
             const {getFieldDecorator} = form;
-            const formItemLayout = {
-                labelCol: {
-                    xs: {span: 24},
-                    sm: {span: 8},
-                    md: {span: 7},
-                    lg: {span: 7},
-                    xl: {span: 8},
-                },
-                wrapperCol: {
-                    xs: {span: 24},
-                    sm: {span: 12},
-                    md: {span: 12},
-                    lg: {span: 11},
-                    xl: {span: 9},
-                },
-            };
-            const tailFormItemLayout = {
-                wrapperCol: {
-                    xs: {span: 24, offset: 0,},
-                    sm: {span: 16, offset: 8,},
-                    md: {span: 16, offset: 7,},
-                    lg: {span: 16, offset: 7,},
-                    xl: {span: 16, offset: 8,},
-                },
-            };
 
             return (
-                <Form  {...formItemLayout} layout="horizontal" onSubmit={this.handleSubmit}>
-                    <Form.Item label="User Role">
-                        {getFieldDecorator('userType', {
-                            initialValue: "1",
-                            rules: [{required: true, message: 'please select a role for this user'}],
-                        })(
-                            <Radio.Group>
-                                <Radio value="0">
-                                    <span style={{width: "80px", display: 'inline-block'}}>
-                                        <i className={iconStyles['iconfont']}>&#xe637;</i>
-                                        &nbsp;Admin
+                <Form layout="horizontal" onSubmit={this.handleSubmit}>
+                    <Row gutter={24}>
+                        <Col span={6}>
+                            <Form.Item label="User Role">
+                                {getFieldDecorator('userType', {
+                                    initialValue: "1",
+                                    rules: [{required: true, message: 'please select a role for this user'}],
+                                })(
+                                    <Radio.Group>
+                                        <Radio value="0">
+                                    <span>
+                                       <Icon type="setting"/>&nbsp;Admin
                                     </span>
-                                </Radio>
-                                <Radio value="1">
-                                    <span style={{width: "80px", display: 'inline-block'}}>
-                                        <i className={iconStyles['iconfont']}>&#xe63c;</i>
-                                        &nbsp;User
+                                        </Radio>
+                                        <Radio value="1">
+                                    <span>
+                                        User
                                     </span>
-                                </Radio>
-                            </Radio.Group>,
-                        )}
-                    </Form.Item>
-
-                    <Form.Item label="Gender">
-                        {getFieldDecorator('gender', {
-                            initialValue: "1",
-                            rules: [{required: true, message: 'please select gender for this user'}],
-                        })(
-                            <Radio.Group>
-                                <Radio value="0">
-                                    <span style={{width: "80px", display: 'inline-block'}}>
-                                        <i style={{color: '#722ed1'}} className={iconStyles['iconfont']}>&#xe629;</i>
-                                        &nbsp;Girl
+                                        </Radio>
+                                    </Radio.Group>,
+                                )}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Gender">
+                                {getFieldDecorator('gender', {
+                                    initialValue: "1",
+                                    rules: [{required: true, message: 'please select gender for this user'}],
+                                })(
+                                    <Radio.Group>
+                                        <Radio value="0">
+                                    <span>
+                                        <Icon type="woman"/>&nbsp;Girl
                                     </span>
-                                </Radio>
-                                <Radio value="1">
-                                    <span style={{width: "80px", display: 'inline-block'}}>
-                                        <i style={{color: '#006d75'}} className={iconStyles['iconfont']}>&#xe621;</i>
-                                        &nbsp;Boy
+                                        </Radio>
+                                        <Radio value="1">
+                                    <span>
+                                        <Icon type="man"/>&nbsp;Boy
                                     </span>
-                                </Radio>
-                            </Radio.Group>,
-                        )}
-                    </Form.Item>
-
-                    <Form.Item label="User Name">
-                        {getFieldDecorator('userName', {
-                            rules: [{required: true, message: 'please input username'}],
-                        })(<Input placeholder={"username"}/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Password" hasFeedback>
-                        {getFieldDecorator('password', {
-                            rules: [
-                                {required: true, message: 'please input password',},
-                                {validator: this.validateToNextPassword,},
-                            ],
-                        })(<Input.Password placeholder={"password"}/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Confirm Password" hasFeedback>
-                        {getFieldDecorator('passwordConfirm', {
-                            rules: [
-                                {required: true, message: 'please input password again',},
-                                {validator: this.compareToFirstPassword,},
-                            ],
-                        })(<Input.Password placeholder={"password above"} onBlur={this.handleConfirmBlur}/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Tel/Phone">
-                        {getFieldDecorator('tel', {
-                            rules: [{required: true, message: 'please input tel/phone of this user'}],
-                        })(<Input placeholder={"12366669999"}/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Email">
-                        {getFieldDecorator('email', {
-                            rules: [
-                                {type: 'email', message: 'are you sure the email you input is in right format?'},
-                                {required: true, message: 'you should give us a email of this user'},
-                            ],
-                        })(<Input placeholder={"abc@123.com"}/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Birth Day">
-                        {getFieldDecorator('birthDay', {
-                            rules: [
-                                {type: 'object', required: true, message: 'please select birthday for this user'},
-                            ],
-                        })(<DatePicker format="YYYY-MM-DD"/>,)}
-                    </Form.Item>
-
-                    <Form.Item label="Address">
-                        {getFieldDecorator('addr', {
-                            rules: [
-                                {required: true, message: 'please input address of this user'},
-                            ],
-                        })(<TextArea placeholder={'a mysterious country, a mysterious city, a mysterious place, a mysterious house'} rows="2"/>)}
-                    </Form.Item>
-
-                    <Form.Item label="Remark">
-                        {getFieldDecorator('remark', {
-                            rules: [
-                                {required: true, message: 'please add some remark for this user'},
-                            ],
-                        })(<TextArea placeholder={'Oh register a user account is so tedious ......'} rows="2"/>)}
-                    </Form.Item>
-
-                    <Form.Item {...tailFormItemLayout}>
+                                        </Radio>
+                                    </Radio.Group>,
+                                )}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="User Name">
+                                {getFieldDecorator('userName', {
+                                    rules: [{required: true, message: 'please input username'}],
+                                })(<Input placeholder={"username"}/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Tel/Phone">
+                                {getFieldDecorator('tel', {
+                                    rules: [{required: true, message: 'please input tel/phone of this user'}],
+                                })(<Input placeholder={"12366669999"}/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Password" hasFeedback>
+                                {getFieldDecorator('password', {
+                                    rules: [
+                                        {required: true, message: 'please input password',},
+                                        {validator: this.validateToNextPassword,},
+                                    ],
+                                })(<Input.Password placeholder={"password"}/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Confirm Password" hasFeedback>
+                                {getFieldDecorator('passwordConfirm', {
+                                    rules: [
+                                        {required: true, message: 'please input password again',},
+                                        {validator: this.compareToFirstPassword,},
+                                    ],
+                                })(<Input.Password placeholder={"password above"}
+                                                   onBlur={this.handleConfirmBlur}/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Email">
+                                {getFieldDecorator('email', {
+                                    rules: [
+                                        {
+                                            type: 'email',
+                                            message: 'are you sure the email you input is in right format?'
+                                        },
+                                        {required: true, message: 'you should give us a email of this user'},
+                                    ],
+                                })(<Input placeholder={"abc@123.com"}/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={6}>
+                            <Form.Item label="Birth Day">
+                                {getFieldDecorator('birthDay', {
+                                    rules: [
+                                        {
+                                            type: 'object',
+                                            required: true,
+                                            message: 'please select birthday for this user'
+                                        },
+                                    ],
+                                })(<DatePicker format="YYYY-MM-DD"/>,)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                            <Form.Item label="Address">
+                                {getFieldDecorator('addr', {
+                                    rules: [
+                                        {required: true, message: 'please input address of this user'},
+                                    ],
+                                })(<TextArea
+                                    placeholder={'a mysterious country, a mysterious city, a mysterious place, a mysterious house'}
+                                    rows="3"/>)}
+                            </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                            <Form.Item label="Remark">
+                                {getFieldDecorator('remark', {
+                                    rules: [
+                                        {required: true, message: 'please add some remark for this user'},
+                                    ],
+                                })(<TextArea placeholder={'Oh register a user account is so tedious ......'}
+                                             rows="3"/>)}
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Form.Item>
                         <Button type="primary" onClick={this.props.handleSubmit}>
                             Create User
                         </Button>
+                        &nbsp;&nbsp;
+                        <Button type="default" onClick={this.props.handleCancel}>
+                            Cancel
+                        </Button>
                     </Form.Item>
-
                 </Form>
             );
         }
@@ -255,17 +257,16 @@ class UserRegisterPage extends Component {
     render() {
         return (
             <div>
-                <PageHeader
-                    className={styles['page-head']}
-                    title="User Register Page"
-                />
-                <Divider className={styles['page-divider']}/>
-                <UserRegisterForm
-                    wrappedComponentRef={this.saveFormRef}
-                    handleSubmit={this.handleSubmit}
-                />
+                <UserRegisterPageHeader resetFun={this.handleCancel}/>
+                <Divider type={'horizontal'}/>
+                <div className={styles.container}>
+                    <UserRegisterForm
+                        wrappedComponentRef={this.saveFormRef}
+                        handleSubmit={this.handleSubmit}
+                        handleCancel={this.handleCancel}
+                    />
+                </div>
             </div>
-
         )
     }
 }

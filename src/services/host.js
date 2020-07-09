@@ -50,6 +50,16 @@ function svcGetHostByUUID(reqData) {
     )
 }
 
+function svcStartHost(reqData) {
+    console.log("~~~~~~~~svcStartHost~~~~~~")
+    return {}
+}
+
+function svcRebootHost() {
+    console.log("~~~~~~~~svcRebootHost~~~~~~")
+    return {}
+}
+
 function svcStopHost(reqData) {
     let {userId, uuid, clusterIp} = reqData;
     // console.log(userId, uuid, action);
@@ -85,6 +95,8 @@ function svcDeleteHost(reqData) {
 export {
     svcGetHostList,
     svcGetHostByUUID,
+    svcStartHost,
+    svcRebootHost,
     svcStopHost,
     svcDeleteHost,
 };

@@ -6,6 +6,76 @@
   "description": "cmdb 前端图标",
   "glyphs": [
     {
+      "icon_id": "7962614",
+      "name": "阿里云",
+      "font_class": "aliyun",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "9126093",
+      "name": "腾讯云",
+      "font_class": "tengxunyun",
+      "unicode": "e747",
+      "unicode_decimal": 59207
+    },
+    {
+      "icon_id": "10118683",
+      "name": "阿里云",
+      "font_class": "aliyun1",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "11506004",
+      "name": "腾讯云",
+      "font_class": "tengxunyun1",
+      "unicode": "e731",
+      "unicode_decimal": 59185
+    },
+    {
+      "icon_id": "12014355",
+      "name": "腾讯云",
+      "font_class": "tengxunyun2",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "12665990",
+      "name": "腾讯云",
+      "font_class": "tengxunyun3",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "12665996",
+      "name": "阿里云",
+      "font_class": "aliyun01",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "12666019",
+      "name": "阿里云",
+      "font_class": "aliyun01-copy-copy-copy",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "14281612",
+      "name": "阿里云",
+      "font_class": "aliyun2",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "14494233",
+      "name": "阿里云",
+      "font_class": "aliyun3",
+      "unicode": "e876",
+      "unicode_decimal": 59510
+    },
+    {
       "icon_id": "1647993",
       "name": "印度",
       "font_class": "yindu",

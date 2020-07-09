@@ -110,9 +110,17 @@ class TableTitle extends Component {
     render() {
         return (
             <div className={styles['table-top']}>
-                <h1 className={styles['table-title']}>Host List Page</h1>
-                <span className={styles['table-toolbar']}>
-                    <span className={styles['toolbar-item']}>
+                <span className={styles['table-top-left']}>
+                    <span className={styles['top-items']}>
+                        <span className={styles.test}>
+                            <span className={styles['text']}>Host List Page</span>
+                        </span>
+
+                    </span>
+                </span>
+
+                <span className={styles['table-top-right']}>
+                    <span className={styles['top-items']}>
                         {this.props.loading
                             ?
                             <Button
@@ -130,7 +138,7 @@ class TableTitle extends Component {
                             </Button>
                         }
                     </span>
-                    <span className={styles['toolbar-item']}>
+                    <span className={styles['top-items']}>
                         <Search
                             placeholder="do search by uuid ..."
                             onPressEnter={e => {

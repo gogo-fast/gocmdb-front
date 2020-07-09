@@ -67,8 +67,9 @@ class StartInstance extends Component {
                 cancelText="No"
                 placement="bottomRight"
             >
-                <Button icon={"play-circle"} style={{background: '#a0d911', width: '28px', height: '28px'}}
-                        size='small'/>
+                <span>
+                    <Icon style={{color: "#5b8c00"}} type="play-circle"/> Start
+                </span>
             </Popconfirm>
         )
     }
