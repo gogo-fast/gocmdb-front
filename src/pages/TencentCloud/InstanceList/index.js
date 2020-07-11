@@ -7,49 +7,32 @@ import {
     Badge,
     Spin,
 } from 'antd';
-import {WaterWave, Gauge} from 'ant-design-pro/lib/Charts';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
 
 import TencentCloud from "../index";
-import InstanceListPageHeader from "./components/InstanceListPageHeader";
 import {parseSearch, validPageSize, validPageNum} from "../../../utils/parseSearch";
-// import renderAction from "./action";
+import renderAction from "./action";
 import {
     apiWsUrl,
     pageSizeOptions
 } from '../../../utils/constants'
-
-// import InstanceDetails from "./components/InstanceDetails";
-// import InstanceListPageHeader from "./components/InstanceListPageHeader";
+import {
+    instanceListColumnMap,
+    defaultMainColumns,
+    mainColumns,
+    expandColumns,
+} from '../../../../config/instanceListColumnMap'
+import instanceStatusMap from "../../../../config/instanceStatus";
+import InstanceListPageHeader from "./components/InstanceListPageHeader";
+import InstanceDetails from "./components/InstanceDetails";
 import iconStyles from "../../../commons/iconfonts/icon.css";
 import styles from './index.less';
-
-const colMap = {
-    'InstanceId': 'InstanceId',
-    'HostName': 'HostName',
-    'RegionId': 'RegionId',
-    'Status': 'Status',
-    'OSName': 'OS',
-    'Cpu': 'Cpu Count',
-    'Memory': 'Memory',
-    'InternetMaxBandwidthIn': 'Bandwidth In',
-    'InternetMaxBandwidthOut': 'Bandwidth Out',
-
-    ////// 'id': 'ID',
-    // 'Uuid': 'UUID',
-    // 'InstanceType': 'InstanceType',
-    // 'CreatedTime': 'CreatedTime',
-    // 'Description': 'Description',
-    // 'InternetChargeType': 'InternetChargeType',
-    // 'VpcId': 'VpcId',
-    // 'PrivateIpAddress': 'PrivateIpAddress',
-    // 'PublicIpAddress': 'PublicIpAddress',
-};
 
 
 @connect(
     ({tencentCloud, loading, login}) => ({
+        selectedColumns: tencentCloud.selectedColumns,
         instances: tencentCloud.instances,
         total: tencentCloud.total,
         loading: loading.models.tencentCloud,
@@ -92,6 +75,23 @@ class InstanceList extends Component {
     };
 
     componentWillMount() {
+        // update columns form config first before node mount
+        let selectedColumns = [];
+        defaultMainColumns.forEach(
+            value => {
+                if (value in instanceListColumnMap) {
+                    selectedColumns.push(value)
+                }
+            }
+        );
+        this.props.dispatch({
+            type: "tencentCloud/updateSelectedColumns",
+            payload: {
+                selectedColumns: selectedColumns
+            },
+        });
+
+        // load regions info from aliyun api
         this.props.dispatch(
             {
                 type: "tencentCloud/getRegions",
@@ -100,7 +100,6 @@ class InstanceList extends Component {
                 }
             }
         );
-
 
         let {regionId, page, size} = parseSearch(this.props.location.search);
         let [pageNum, pageSize] = [validPageNum(page), validPageSize(size, pageSizeOptions)];
@@ -231,32 +230,38 @@ class InstanceList extends Component {
     };
 
     render() {
-
         let columns = [];
-        // let firstRecord = this.props.hosts[0];
-        // for (let k in firstRecord) {}
-        for (let k in colMap) {
-            // if (k === "key") continue;
+        for (let k of this.props.selectedColumns) {
             let column = {};
             column.align = 'center';
-            column.title = colMap[k];
+            column.title = instanceListColumnMap[k];
             column.dataIndex = k;
             column.key = k;
-
             if (k === 'Status') {
                 column.render = Status => {
-                    if (Status === 'Pending') {
-                        return (<Tag color={'#722ed1'}>Pending</Tag>);
-                    } else if (Status === 'Running') {
-                        return (<Tag color={'#237804'}>Running</Tag>);
-                    } else if (Status === 'Starting') {
-                        return (<Tag color={'#a0d911'}>Starting</Tag>);
-                    } else if (Status === 'Stopping') {
-                        return (<Tag color={'#d4b106'}>Stopping</Tag>);
-                    } else if (Status === 'Stopped') {
-                        return (<Tag color={'#876800'}>Stopped</Tag>);
-                    } else {
-                        return (<Tag color={'#8c8c8c'}>Unknown</Tag>);
+                    switch (Status) {
+                        case instanceStatusMap.StatusPending:
+                            return (<Tag color={'#722ed1'}>{instanceStatusMap.StatusPending}</Tag>);
+                        case instanceStatusMap.StatusRunning:
+                            return (<Tag color={'#237804'}>{instanceStatusMap.StatusRunning}</Tag>);
+                        case instanceStatusMap.StatusStarting:
+                            return (<Tag color={'#a0d911'}>{instanceStatusMap.StatusStarting}</Tag>);
+                        case instanceStatusMap.StatusStopping:
+                            return (<Tag color={'#d4b106'}>{instanceStatusMap.StatusStopping}</Tag>);
+                        case  instanceStatusMap.StatusStopped:
+                            return (<Tag color={'#876800'}>{instanceStatusMap.StatusStopped}</Tag>);
+                        case  instanceStatusMap.StatusLaunchFailed:
+                            return (<Tag color={'#cf1322'}>{instanceStatusMap.StatusLaunchFailed}</Tag>);
+                        case  instanceStatusMap.StatusRebooting:
+                            return (<Tag color={'#13c2c2'}>{instanceStatusMap.StatusRebooting}</Tag>);
+                        case  instanceStatusMap.StatusShutdown:
+                            return (<Tag color={'#780650'}>{instanceStatusMap.StatusShutdown}</Tag>);
+                        case  instanceStatusMap.StatusDeleting:
+                            return (<Tag color={'#c41d7f'}>{instanceStatusMap.StatusDeleting}</Tag>);
+                        case  instanceStatusMap.StatusUnknown:
+                            return (<Tag color={'#8c8c8c'}>{instanceStatusMap.StatusUnknown}</Tag>);
+                        default:
+                            return (<Tag color={'#8c8c8c'}>{instanceStatusMap.StatusUnknown}</Tag>);
                     }
                 };
             }
@@ -289,13 +294,13 @@ class InstanceList extends Component {
         }
 
         if (columns.length !== 0) {
-            // renderAction(columns)
+            renderAction(columns)
         }
         let instanceList = [];
         this.props.instances && this.props.instances.map(
             (value) => {
                 let data = {};
-                for (let k in colMap) {
+                for (let k of this.props.selectedColumns) {
                     data["key"] = value.InstanceId;
                     data[k] = value[k]
                 }

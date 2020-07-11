@@ -8,7 +8,7 @@ import {
     Badge,
 } from 'antd';
 import Link from 'umi/link';
-import withRouter from 'umi/withRouter'
+import withRouter from 'umi/withRouter';
 
 import Host from "../index";
 import {parseSearch, validPageSize, validPageNum} from "../../../utils/parseSearch";
@@ -16,7 +16,12 @@ import renderAction from "./action";
 import {
     pageSizeOptions
 } from '../../../utils/constants'
-
+import {
+    hostListColumnMap,
+    defaultMainColumns,
+    expandColumns,
+    mainColumns
+} from '../../../../config/hostListColumnMap';
 import HostDetails from "./components/Details";
 import HostListPageHeader from "./components/HostListPageHeader";
 import iconStyles from "../../../commons/iconfonts/icon.css";
@@ -24,6 +29,7 @@ import styles from './index.less';
 
 @connect(
     ({host, loading}) => ({
+        selectedColumns: host.selectedColumns,
         hosts: host.hosts,
         total: host.total,
         loading: loading.models.host,
@@ -48,6 +54,23 @@ class HostList extends Component {
     };
 
     componentWillMount() {
+        // update columns form config first before node mount
+        let selectedColumns = [];
+        defaultMainColumns.forEach(
+            value => {
+                if (value in hostListColumnMap) {
+                    selectedColumns.push(value)
+                }
+            }
+        );
+        this.props.dispatch({
+            type: "host/updateSelectedColumns",
+            payload: {
+                selectedColumns: selectedColumns
+            },
+        });
+
+
         let {page, size} = parseSearch(this.props.location.search);
         let [pageNum, pageSize] = [validPageNum(page), validPageSize(size, pageSizeOptions)];
         this.props.dispatch({
@@ -152,38 +175,11 @@ class HostList extends Component {
     };
 
     render() {
-        const colMap = {
-            // 'id': 'ID',
-            'uuid': 'UUID',
-            'isOnline': 'Online Status',
-            'hostStatus': 'Host Status',
-            'outBoundIp': "Out Bound IP",
-            'clusterIp': "Cluster IP",
-            'hostname': 'Host Name',
-            'os': 'OS',
-            'arch': 'Arch',
-            'cpuCount': 'Cpu Count',
-            'cpuUsePercent': 'Cpu Use Percent',
-            'ramPercent': 'Ram Usage Percent',
-
-            // 'ips': 'Ip List',
-            // 'ramTotal': 'Ram Total',
-            // 'ramUsed': 'Ram Used',
-            // 'disks': 'Disks',
-            // 'avgLoad': 'Load Average',
-            // 'bootTime': 'Boot Time',
-            // 'createTime': 'Create Time',
-            // 'updateTime': 'Update Time',n
-            // 'deleteTime': 'Delete Time',
-        };
         let columns = [];
-        // let firstRecord = this.props.hosts[0];
-        // for (let k in firstRecord) {}
-        for (let k in colMap) {
-            // if (k === "key") continue;
+        for (let k of this.props.selectedColumns) {
             let column = {};
             column.align = 'center';
-            column.title = colMap[k];
+            column.title = hostListColumnMap[k];
             column.dataIndex = k;
             column.key = k;
             if (k === 'isOnline') {
@@ -197,20 +193,21 @@ class HostList extends Component {
             }
             if (k === 'hostStatus') {
                 column.render = hostStatus => {
-                    if (hostStatus === 0) {
-                        return (<Tag color={'#7cb305'}>Running</Tag>);
-                    } else if (hostStatus === 1) {
-                        return (<Tag color={'#5cdbd3'}>Starting</Tag>);
-                    } else if (hostStatus === 2) {
-                        return (<Tag color={'#faad14'}>Stopping</Tag>);
-                    } else if (hostStatus === 3) {
-                        return (<Tag color={'#5c0011'}>Stopped</Tag>);
-                    } else if (hostStatus === 4) {
-                        return (<Tag color={'#fa541c'}>Maintaining</Tag>);
-                    } else if (hostStatus === 5) {
-                        return (<Tag color={'#1f1f1f'}>Deleted</Tag>);
-                    } else if (hostStatus === 6) {
-                        return (<Tag color={'#595959'}>Unknown</Tag>);
+                    switch (hostStatus) {
+                        case 0:
+                            return (<Tag color={'#237804'}>RUNNING</Tag>);
+                        case 1:
+                            return (<Tag color={'#a0d911'}>STARTING</Tag>);
+                        case 2:
+                            return (<Tag color={'#d4b106'}>STOPPING</Tag>);
+                        case 3:
+                            return (<Tag color={'#876800'}>STOPPED</Tag>);
+                        case 4:
+                            return (<Tag color={'#fa541c'}>MAINTAINING</Tag>);
+                        case 5:
+                            return (<Tag color={'#1f1f1f'}>DELETED</Tag>);
+                        default:
+                            return (<Tag color={'#8c8c8c'}>UNKNOWN</Tag>);
                     }
                 };
             }
@@ -247,7 +244,7 @@ class HostList extends Component {
         this.props.hosts.map(
             (value) => {
                 let data = {};
-                for (let k in colMap) {
+                for (let k of this.props.selectedColumns) {
                     data["key"] = value.id;
                     data[k] = value[k]
                 }
@@ -260,7 +257,8 @@ class HostList extends Component {
                 <HostListPageHeader/>
                 <div className={styles.container}>
                     <Table
-                        bordered
+                        // bordered
+                        tableLayout={undefined}
                         size="small"
                         columns={this.props.hosts.length !== 0 ? columns : null}
                         dataSource={hostList}

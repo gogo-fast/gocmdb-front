@@ -21,6 +21,7 @@ import {
 import tencentRegionMap from "../../../../../../config/tencentRegionConfig";
 import styles from './index.less';
 import {apiWsUrl} from "../../../../../utils/constants";
+import {russia} from "../../../../../../public/flags/regionFlags";
 
 const countryFlagMap = {
     "china": china,
@@ -34,6 +35,7 @@ const countryFlagMap = {
     "america": america,
     "india": india,
     "united_arab_emirates": united_arab_emirates,
+    "russia": russia,
 };
 
 
@@ -116,18 +118,18 @@ class Region extends Component {
                 overlay={
                     <div className={styles['regions-container']}>
                         <div className={styles['regions-container-left']}>
+                            <div className={styles['location-title']}>亚太</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>亚太</div>
                                 {this.renderRegions(this.props.regions, "亚太")}
                             </div>
                         </div>
                         <div className={styles['regions-container-right']}>
+                            <div className={styles['location-title']}>欧美</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>欧美</div>
                                 {this.renderRegions(this.props.regions, "欧美")}
                             </div>
+                            <div className={styles['location-title']}>中东与印度</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>中东与印度</div>
                                 {this.renderRegions(this.props.regions, "中东与印度")}
                             </div>
                         </div>

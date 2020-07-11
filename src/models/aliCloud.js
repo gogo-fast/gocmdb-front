@@ -7,13 +7,10 @@ import {
     svcStopInstanceById,
     svcRebootInstanceById,
     svcDeleteInstanceById,
-
-
 } from "../services/cloud";
 import {
     message
 } from 'antd';
-import {apiWsUrl} from "../utils/constants";
 import aliyunRegionMap from "../../config/aliyunRegionConfig";
 
 export default {
@@ -22,6 +19,7 @@ export default {
         regions: [],
         defaultRegionId: "cn-qingdao",
         sgs: [],
+        selectedColumns: [],
         instances: [],
         total: 0,
         instanceListPageNum: 1,
@@ -42,30 +40,29 @@ export default {
         },
         * searchInstance(action, {call, put}) {
             const resp = yield call(svcGetInstanceById, action.payload);
-            yield put({type: "updateSinInstances", payload: resp.data})
+            yield put({type: "updateInstances", payload: resp.data})
         },
         * getSecurityGroups(action, {call, put}) {
             const resp = yield call(svcGetSecurityGroups, action.payload);
             yield put({type: "updateSgs", payload: resp.data});
             yield put({type: "notification", payload: resp.data})
         },
-        *startInstance(action, {call, put}){
+        * startInstance(action, {call, put}) {
             const resp = yield call(svcStartInstanceById, action.payload);
             yield put({type: "notification", payload: resp.data})
         },
-        *stopInstance(action, {call, put}){
+        * stopInstance(action, {call, put}) {
             const resp = yield call(svcStopInstanceById, action.payload);
             yield put({type: "notification", payload: resp.data})
         },
-        *rebootInstance(action, {call, put}){
+        * rebootInstance(action, {call, put}) {
             const resp = yield call(svcRebootInstanceById, action.payload);
             yield put({type: "notification", payload: resp.data})
         },
-        *deleteInstance(action, {call, put}){
+        * deleteInstance(action, {call, put}) {
             const resp = yield call(svcDeleteInstanceById, action.payload);
             yield put({type: "notification", payload: resp.data})
         },
-
     },
     reducers: {
         updateInstances(state, action) {
@@ -111,6 +108,9 @@ export default {
                 instanceListPageNum: action.payload.instanceListPageNum,
                 instanceListPageSize: action.payload.instanceListPageSize,
             })
+        },
+        updateSelectedColumns(state, action) {
+            return Object.assign({}, state, {selectedColumns: action.payload.selectedColumns})
         },
         updateInstanceWebSocket(state, action) {
             return Object.assign({}, state, {instancesWs: action.payload.ws})

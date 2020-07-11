@@ -138,6 +138,15 @@ const united_arab_emirates = <i>
     </svg>
 </i>
 
+const russia = <i>
+    <svg viewBox="0 0 3 3">
+        <path fill="#fff" d="M0 0h3v1H0z" />
+        <path fill="#01017e" d="M0 1h3v1H0z" />
+        <path fill="#fe0101" d="M0 2h3v1H0z" />
+    </svg>
+</i>
+
+
 export {
     china,
     singapore,
@@ -150,6 +159,7 @@ export {
     america,
     india,
     united_arab_emirates,
+    russia,
 }
 
 

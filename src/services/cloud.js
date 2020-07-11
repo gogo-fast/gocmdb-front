@@ -30,6 +30,23 @@ function svcGetRegions(reqData) {
     )
 }
 
+function svcGetInstancesStatusList(reqData) {
+    let {platType, regionId, instanceIds} = reqData;
+    return axios(
+        {
+            method: "POST",
+            url: `${apiUrl}/cloud/instance/status/list`,
+            params: {
+                platType: platType,
+                regionId: regionId,
+            },
+            data: {
+                instanceIds: instanceIds,
+            }
+        }
+    )
+}
+
 
 function svcGetInstanceList(reqData) {
     let {platType, regionId, pageNum, pageSize} = reqData;
@@ -144,5 +161,5 @@ export {
     svcStopInstanceById,
     svcRebootInstanceById,
     svcDeleteInstanceById,
-
+    svcGetInstancesStatusList,
 }

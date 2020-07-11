@@ -1,27 +1,24 @@
 import {Component} from 'react';
-import {Input, Button, Icon, Select, Dropdown} from 'antd';
+import {Input} from 'antd';
 import {connect} from 'dva';
 import withRouter from 'umi/withRouter';
-import Region from "../Region";
 
 
-// import styles from './index.less'
 import {apiWsUrl} from "../../../../../utils/constants";
-import aliyunRegionMap from "../../../../../../config/aliyunRegionConfig";
 
 
 const {Search} = Input;
-const {Option} = Select;
+
 
 @connect(
-    ({loading, login, aliCloud}) => ({
-        loading: loading.models.aliCloud,
-        pageNum: aliCloud.instanceListPageNum,
-        pageSize: aliCloud.instanceListPageSize,
-        regions: aliCloud.regions,
-        defaultRegion: aliCloud.defaultRegion,
-        defaultRegionId: aliCloud.defaultRegionId,
-        instancesWs: aliCloud.instancesWs,
+    ({loading, login, tencentCloud}) => ({
+        loading: loading.models.tencentCloud,
+        pageNum: tencentCloud.instanceListPageNum,
+        pageSize: tencentCloud.instanceListPageSize,
+        regions: tencentCloud.regions,
+        defaultRegion: tencentCloud.defaultRegion,
+        defaultRegionId: tencentCloud.defaultRegionId,
+        instancesWs: tencentCloud.instancesWs,
     })
 )
 @withRouter
@@ -35,18 +32,18 @@ class SearchInstance extends Component {
 
         this.props.dispatch(
             {
-                type: "aliCloud/searchInstance",
+                type: "tencentCloud/searchInstance",
                 payload: {
-                    platType: "aliyun",
+                    platType: "tencent",
                     instanceId: instanceId,
                     regionId: regionId,
                 }
             }
         );
 
-        let ws = new WebSocket(`${apiWsUrl}/cloud/ws/instance?platType=aliyun&regionId=${regionId}&instanceId=${instanceId}`);
+        let ws = new WebSocket(`${apiWsUrl}/cloud/ws/instance?platType=tencent&regionId=${regionId}&instanceId=${instanceId}`);
         this.props.dispatch({
-            type: "aliCloud/updateInstanceWebSocket",
+            type: "tencentCloud/updateInstanceWebSocket",
             payload: {ws: ws}
         });
         ws.onmessage = msgEv => {
@@ -63,7 +60,7 @@ class SearchInstance extends Component {
             };
             this.props.dispatch(
                 {
-                    type: "aliCloud/updateInstances",
+                    type: "tencentCloud/updateInstances",
                     payload: newResp,
                 }
             );

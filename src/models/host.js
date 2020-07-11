@@ -15,6 +15,7 @@ import {apiWsUrl} from "../utils/constants";
 export default {
     namespaces: "host",
     state: {
+        selectedColumns: [],
         hosts: [],
         total: 0,
         hostListPageNum: 1,
@@ -62,7 +63,7 @@ export default {
             return Object.assign({}, state, {
                 hosts: action.payload.data.hosts,
                 total: action.payload.data.total,
-                hostListPageNum: (currentPageNum === -1) ? state.hostListPageNum: currentPageNum,
+                hostListPageNum: (currentPageNum === -1) ? state.hostListPageNum : currentPageNum,
 
             })
         },
@@ -80,6 +81,9 @@ export default {
                 hostListPageNum: action.payload.hostListPageNum,
                 hostListPageSize: action.payload.hostListPageSize,
             })
+        },
+        updateSelectedColumns(state, action) {
+            return Object.assign({}, state, {selectedColumns: action.payload.selectedColumns})
         },
         updateHostWebSocket(state, action) {
             return Object.assign({}, state, {hostsWs: action.payload.ws})

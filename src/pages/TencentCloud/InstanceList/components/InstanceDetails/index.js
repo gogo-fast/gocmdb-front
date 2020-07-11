@@ -88,9 +88,9 @@ const InstanceDetails = (props) => {
 };
 
 export default connect(
-    ({aliCloud, loading}) => ({
-        instances: aliCloud.hosts,
-        loading: loading.models.aliCloud
+    ({tencentCloud, loading}) => ({
+        instances: tencentCloud.hosts,
+        loading: loading.models.tencentCloud
     })
 )(InstanceDetails);
 

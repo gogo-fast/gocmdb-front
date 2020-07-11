@@ -6,15 +6,15 @@ import withRouter from 'umi/withRouter';
 import {apiWsUrl} from "../../../../../utils/constants";
 
 @connect(
-    ({layout, loading, login, aliCloud}) => ({
+    ({layout, loading, login, tencentCloud}) => ({
         currentTheme: layout.theme,
-        loading: loading.models.aliCloud,
-        pageNum: aliCloud.instanceListPageNum,
-        pageSize: aliCloud.instanceListPageSize,
-        regions: aliCloud.regions,
-        defaultRegion: aliCloud.defaultRegion,
-        defaultRegionId: aliCloud.defaultRegionId,
-        instancesWs: aliCloud.instancesWs,
+        loading: loading.models.tencentCloud,
+        pageNum: tencentCloud.instanceListPageNum,
+        pageSize: tencentCloud.instanceListPageSize,
+        regions: tencentCloud.regions,
+        defaultRegion: tencentCloud.defaultRegion,
+        defaultRegionId: tencentCloud.defaultRegionId,
+        instancesWs: tencentCloud.instancesWs,
     })
 )
 @withRouter

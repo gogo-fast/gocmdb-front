@@ -17,6 +17,7 @@ import {
     america,
     india,
     united_arab_emirates,
+    russia,
 } from '../../../../../../public/flags/regionFlags.js'
 import aliyunRegionMap from "../../../../../../config/aliyunRegionConfig";
 import styles from './index.less';
@@ -54,6 +55,7 @@ class Region extends Component {
         // important!!!
         if (this.props.instancesWs) this.props.instancesWs.close();
 
+        // get custom props data with data-*
         let RegionId = e.currentTarget.getAttribute('data-region-id');
         this.props.dispatch({
             type: "aliCloud/updateDefaultRegionId",
@@ -116,18 +118,18 @@ class Region extends Component {
                 overlay={
                     <div className={styles['regions-container']}>
                         <div className={styles['regions-container-left']}>
+                            <div className={styles['location-title']}>亚太</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>亚太</div>
                                 {this.renderRegions(this.props.regions, "亚太")}
                             </div>
                         </div>
                         <div className={styles['regions-container-right']}>
+                            <div className={styles['location-title']}>欧美</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>欧美</div>
                                 {this.renderRegions(this.props.regions, "欧美")}
                             </div>
+                            <div className={styles['location-title']}>中东与印度</div>
                             <div className={styles['region-items']}>
-                                <div className={styles['location-title']}>中东与印度</div>
                                 {this.renderRegions(this.props.regions, "中东与印度")}
                             </div>
                         </div>

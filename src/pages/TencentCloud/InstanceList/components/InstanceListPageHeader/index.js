@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'dva';
-
-
 import {
     PageHeader,
     Descriptions,
@@ -10,6 +8,7 @@ import {
 import Refresh from "../Refresh";
 import SearchInstance from "../SearchInstance";
 import Region from "../Region";
+import InstanceListColumnSetting from "../ColumnSetting";
 import iconStyles from '../../../../../commons/iconfonts/icon.css';
 
 
@@ -22,7 +21,8 @@ class InstanceListPageHeader extends Component {
                     ghost={false}
                     title={
                         <span>
-                            <i style={{color: '#1890ff'}} className={iconStyles['iconfont']}>&#xe731;</i>
+                            {/*外部 iconfont 最好设置字体大小，否则会影响布局(columns 选择器下拉的时候回有提提跳动)*/}
+                            <i style={{color: '#1890ff', fontSize: 32}} className={iconStyles['iconfont']}>&#xe731;</i>
                             &nbsp;&nbsp;Instances list page
                         </span>
                     }
@@ -31,8 +31,11 @@ class InstanceListPageHeader extends Component {
                         <SearchInstance key="2"/>,
                     ]}
                 >
-                    <Descriptions size="small" column={3}>
+                    <Descriptions size="small" column={5}>
                         <Descriptions.Item label="Select region"><Region/></Descriptions.Item>
+                        <Descriptions.Item>
+                            <InstanceListColumnSetting/>
+                        </Descriptions.Item>
                     </Descriptions>
                 </PageHeader>
             </div>
