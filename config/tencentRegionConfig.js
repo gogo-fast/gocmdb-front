@@ -12,7 +12,7 @@ const tencentRegionMap = {
     "ap-shenzhen-fsi": {RegionId: "ap-shenzhen-fsi", RegionName: "华南地区(深圳金融)", Location: "亚太", Country: "china"},
     "ap-singapore": {RegionId: "ap-singapore", RegionName: "东南亚地区(新加坡)", Location: "亚太", Country: "singapore"},
     "ap-tokyo": {RegionId: "ap-tokyo", RegionName: "亚太地区(东京)", Location: "亚太", Country: "japan"},
-    "ap-seoul": {RegionId: "ap-seoul", RegionName: "亚太地区(首尔)", Location: "亚太", Country: "korean"},
+    "ap-seoul": {RegionId: "ap-seoul", RegionName: "亚太地区(首尔)", Location: "亚太", Country: "korea"},
     "eu-frankfurt": {RegionId: "eu-frankfurt", RegionName: "欧洲地区(法兰克福)", Location: "欧美", Country: "germany"},
     "eu-moscow": {RegionId: "eu-moscow", RegionName: "欧洲地区(莫斯科)", Location: "欧美", Country: "russia"},
     "na-ashburn": {RegionId: "na-ashburn", RegionName: "美国东部(弗吉尼亚)", Location: "欧美", Country: "america"},

@@ -17,25 +17,32 @@ import {
     america,
     india,
     united_arab_emirates,
+    korea,
+    russia,
+    thailand,
+    canada,
 } from '../../../../../../public/flags/regionFlags.js'
 import tencentRegionMap from "../../../../../../config/tencentRegionConfig";
 import styles from './index.less';
 import {apiWsUrl} from "../../../../../utils/constants";
-import {russia} from "../../../../../../public/flags/regionFlags";
+
 
 const countryFlagMap = {
-    "china": china,
-    "singapore": singapore,
-    "australia": australia,
-    "malaysia": malaysia,
-    "indonesia": indonesia,
-    "japan": japan,
-    "germany": germany,
-    "england": england,
-    "america": america,
-    "india": india,
-    "united_arab_emirates": united_arab_emirates,
-    "russia": russia,
+    china,
+    singapore,
+    australia,
+    malaysia,
+    indonesia,
+    japan,
+    germany,
+    england,
+    america,
+    india,
+    united_arab_emirates,
+    russia,
+    korea,
+    thailand,
+    canada,
 };
 
 
