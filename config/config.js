@@ -3,6 +3,7 @@ export default {
     plugins: [
         [
             'umi-plugin-react',
+            'case-sensitive-paths-webpack-plugin',
             {
                 antd: true,
                 dva: true, // 在这里打开 dva
