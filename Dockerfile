@@ -1,5 +1,5 @@
 # Builder image
-FROM node AS builder
+FROM node:12.16.0 AS builder
 
 WORKDIR /reactApp/
 
