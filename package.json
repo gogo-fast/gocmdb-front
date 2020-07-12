@@ -35,8 +35,10 @@
     "moment": "^2.26.0",
     "react-bootstrap": "^1.2.1",
     "react-custom-scrollbars": "^4.2.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-websocket": "^2.1.0"
+    "react-websocket": "^2.1.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "umi-plugin-react": "^1.15.8"
