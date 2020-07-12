@@ -1,6 +1,6 @@
 import {Layout} from 'antd';
-import LeftContent from "../components/Header/LeftContent";
-import RightContent from "../components/Header/RightContent";
+import LeftContent from "../components/header/LeftContent";
+import RightContent from "../components/header/RightContent";
 import styles from './index.less';
 
 const {Header} = Layout;
