@@ -1,6 +1,6 @@
 import {connect} from 'dva';
 import {Layout} from 'antd';
-import SiderBar from 'src/layouts/BasicLayout/components/Sider/Siderbar';
+import SiderBar from '../components/Sider/Siderbar';
 import loadtheme from "../../../utils/themeLoder";
 
 import styles from "./index.less";
