@@ -1,13 +1,19 @@
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+
+
 export default {
     // 插件配置
     plugins: [
         [
             'umi-plugin-react',
-            'case-sensitive-paths-webpack-plugin',
             {
                 antd: true,
                 dva: true, // 在这里打开 dva
             },
+            CaseSensitivePathsPlugin,
+            {
+                debub: true,
+            }
         ],
     ],
     // 路由配置
