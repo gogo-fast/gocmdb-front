@@ -46,14 +46,14 @@ class LeftContent extends Component {
                     loading={this.props.loading}
                     cover={<AvatarUpload/>}
                 >
-                    <Meta
-                        title={userName}
-                        description="This is the user information"
-                    />
-                    <Divider/>
-                    <div>
-                        <MyDetails/>
-                    </div>
+                    {/*<Meta*/}
+                    {/*    title={userName}*/}
+                    {/*    description="This is the user information"*/}
+                    {/*/>*/}
+                    {/*<Divider/>*/}
+                    {/*<div>*/}
+                    {/*    <MyDetails/>*/}
+                    {/*</div>*/}
                 </Card>
             </div>
         );

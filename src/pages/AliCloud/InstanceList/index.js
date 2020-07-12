@@ -19,8 +19,8 @@ import {
 } from '../../../utils/constants'
 import {
     instanceListColumnMap,
-    mainColumns,
     defaultMainColumns,
+    mainColumns,
     expandColumns,
 } from '../../../../config/instanceListColumnMap'
 import instanceStatusMap from "../../../../config/instanceStatus";
@@ -39,7 +39,6 @@ import styles from './index.less';
         pageNum: aliCloud.instanceListPageNum,
         pageSize: aliCloud.instanceListPageSize,
         defaultRegionId: aliCloud.defaultRegionId,
-        defaultRegion: aliCloud.defaultRegion,
         instancesWs: aliCloud.instancesWs,
     })
 )

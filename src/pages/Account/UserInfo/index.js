@@ -16,7 +16,6 @@ class UserInfo extends Component {
         return (
             <Account>
                 <AccountInformationPageHeader/>
-                <Divider type={'horizontal'}/>
                 <div className={styles['user-info-container']}>
                     <div className={styles['left-content']}>
                         <LeftContent/>

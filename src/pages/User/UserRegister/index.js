@@ -258,7 +258,7 @@ class UserRegisterPage extends Component {
         return (
             <div>
                 <UserRegisterPageHeader resetFun={this.handleCancel}/>
-                <Divider type={'horizontal'}/>
+                {/*<Divider type={'horizontal'}/>*/}
                 <div className={styles.container}>
                     <UserRegisterForm
                         wrappedComponentRef={this.saveFormRef}

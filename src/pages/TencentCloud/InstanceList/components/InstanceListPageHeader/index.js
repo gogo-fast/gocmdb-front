@@ -31,7 +31,7 @@ class InstanceListPageHeader extends Component {
                         <SearchInstance key="2"/>,
                     ]}
                 >
-                    <Descriptions size="small" column={5}>
+                    <Descriptions size="small" column={4}>
                         <Descriptions.Item label="Select region"><Region/></Descriptions.Item>
                         <Descriptions.Item>
                             <InstanceListColumnSetting/>

@@ -22,30 +22,11 @@ export default {
             routes: [
                 {
                     path: '/',
-                    component: './Home'
-                },
-                {
-                    path: '/home',
-                    component: './Home'
+                    component: './Dashboard'
                 },
                 {
                     path: '/dashboard',
                     component: './Dashboard',
-                    routes: [
-                        {
-                            path: '/dashboard/pj1',
-                            component: './Dashboard/Project1'
-                        },
-                        {
-                            path: '/dashboard/pj2',
-                            component: './Dashboard/Project2'
-                        },
-                        {
-                            // 默认路由不需要path字段
-                            component: './Errors/NotFound',
-                        }
-                    ],
-
                 },
                 {
                     path: '/cloud/aliyun',

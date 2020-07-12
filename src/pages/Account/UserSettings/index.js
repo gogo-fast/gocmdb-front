@@ -26,7 +26,6 @@ class UserSettings extends Component {
         return (
             <Account>
                 <AccountSettingPageHeader/>
-                <Divider type={'horizontal'}/>
                 <div className={styles.container}>
                     <Tabs
                         className={styles['setting-tab']}

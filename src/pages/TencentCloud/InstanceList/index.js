@@ -39,7 +39,6 @@ import styles from './index.less';
         pageNum: tencentCloud.instanceListPageNum,
         pageSize: tencentCloud.instanceListPageSize,
         defaultRegionId: tencentCloud.defaultRegionId,
-        defaultRegion: tencentCloud.defaultRegion,
         instancesWs: tencentCloud.instancesWs,
     })
 )
@@ -91,7 +90,7 @@ class InstanceList extends Component {
             },
         });
 
-        // load regions info from aliyun api
+        // load regions info from tencent api
         this.props.dispatch(
             {
                 type: "tencentCloud/getRegions",
@@ -113,7 +112,7 @@ class InstanceList extends Component {
 
         // do not use this.props.pageNum and this.props.pageSize in componentWillMount
         // because they are still old values.
-        // this.props.defaultRegionId should be set in models.aliCloud
+        // this.props.defaultRegionId should be set in models.tencentCloud.
         // since old value will be used in componentWillMount
         regionId = (regionId === '' || regionId === undefined) ? this.props.defaultRegionId : regionId;
         this.actionFunc(regionId, pageNum, pageSize);

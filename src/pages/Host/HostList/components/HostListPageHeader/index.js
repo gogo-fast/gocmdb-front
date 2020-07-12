@@ -30,7 +30,7 @@ class HostListPageHeader extends Component {
                         <SearchHost key="1"/>,
                     ]}
                 >
-                    <Descriptions size="small" column={3}>
+                    <Descriptions size="small" column={4}>
                         <Descriptions.Item><HostListColumnSetting/></Descriptions.Item>
                     </Descriptions>
                 </PageHeader>

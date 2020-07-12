@@ -1,32 +1,10 @@
 const menuList = [
     {
-        title: 'Home',
-        key: '/home',
-        icon: 'home',
-        url: "/home",
-        roles: ['admin', 'user']
-    },
-    {
         title: 'Dashboard',
         key: '/dashboard',
         icon: 'dashboard',
+        url: "/dashboard",
         roles: ['admin', 'user'],
-        menus: [
-            {
-                title: 'Project-1',
-                key: '/dashboard/pj1',
-                icon: 'project',
-                url: '/dashboard/pj1',
-                roles: ['admin', 'user']
-            },
-            {
-                title: 'Project-2',
-                key: '/dashboard/pj2',
-                icon: 'project',
-                url: '/dashboard/pj2',
-                roles: ['admin', 'user']
-            },
-        ]
     },
     {
         title: 'Cloud',
