@@ -9,6 +9,7 @@ import {
     notification,
     Icon,
 } from "antd";
+import instanceStatusMap from "../../../../../../config/instanceStatus";
 
 
 const openNotificationWithIcon = (msg, desc) => {
@@ -35,7 +36,7 @@ class StartInstance extends Component {
     handleConfirm = () => {
         if (this.props.record && 'InstanceId' in this.props.record) {
             let {Status, InstanceId} = this.props.record;
-            if (Status === "Running" || Status === "Stopping" || Status === "Pending" || Status === "Starting") {
+            if (Status === instanceStatusMap.StatusRunning || Status === instanceStatusMap.StatusStopping || Status === instanceStatusMap.StatusPending || Status === instanceStatusMap.StatusStarting) {
                 openNotificationWithIcon(
                     `can not start instance [${InstanceId}]`,
                     `instance [${Status}] can not to start`

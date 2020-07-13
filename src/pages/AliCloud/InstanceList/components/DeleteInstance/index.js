@@ -9,6 +9,7 @@ import {
     notification,
     Icon,
 } from "antd";
+import instanceStatusMap from "../../../../../../config/instanceStatus";
 
 
 const openNotificationWithIcon = (msg, desc) => {
@@ -35,7 +36,7 @@ class DeleteInstance extends Component {
     handleConfirm = () => {
         if (this.props.record && 'InstanceId' in this.props.record) {
             let {Status, InstanceId} = this.props.record;
-            if (Status !== "Stopped") {
+            if (Status !== instanceStatusMap.StatusStopped) {
                 openNotificationWithIcon(
                     `can not delete instance [${InstanceId}]`,
                     `instance [${Status}] can not de delete`

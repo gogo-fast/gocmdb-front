@@ -25,6 +25,18 @@ function svcGetUserList(reqData) {
                 userId: userId,
             }
         }
+    ).then(
+        value => {
+            let users = value.data.data.users;
+            let total = value.data.data.total;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? total : 0,
+                "users": (status === 'ok') ? users : [],
+                "currentPageNum": -1,
+            };
+            return value
+        }
     )
 }
 

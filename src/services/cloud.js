@@ -27,6 +27,15 @@ function svcGetRegions(reqData) {
                 platType: platType,
             },
         }
+    ).then(
+        value => {
+            let regions = value.data.data;
+            let status = value.data.status;
+            value.data.data = {
+                "regions": (status === 'ok') ? regions : [],
+            };
+            return value;
+        }
     )
 }
 
@@ -44,6 +53,18 @@ function svcLoadInstancesStatusList(reqData) {
                 instanceIds: instanceIds,
             }
         }
+    ).then(
+        value => {
+            let total = value.data.data.total;
+            let instancesStatus = value.data.data.instancesStatus;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? total : 0,
+                "instancesStatus": (status === 'ok') ? instancesStatus : [],
+                "currentPageNum": -1,
+            };
+            return value
+        }
     )
 }
 
@@ -58,6 +79,18 @@ function svcGetAllInstancesStatusList(reqData) {
                 platType: platType,
                 regionId: regionId,
             },
+        }
+    ).then(
+        value => {
+            let total = value.data.data.total;
+            let instancesStatus = value.data.data.instancesStatus;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? total : 0,
+                "instancesStatus": (status === 'ok') ? instancesStatus : [],
+                "currentPageNum": -1,
+            };
+            return value
         }
     )
 }
@@ -75,6 +108,18 @@ function svcGetInstanceList(reqData) {
                 page: pageNum,
                 size: pageSize,
             },
+        }
+    ).then(
+        value => {
+            let total = value.data.data.total;
+            let instances = value.data.data.instances;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? total : 0,
+                "instances": (status === 'ok') ? instances : [],
+                "currentPageNum": -1,
+            };
+            return value
         }
     )
 }

@@ -76,7 +76,8 @@ export default {
         },
         updateRegions(state, action) {
             let newRegions = [];
-            action.payload.data.map(
+            let regions = action.payload.data.regions;
+            regions.map(
                 value => {
                     if (value.RegionId in tencentRegionMap) {
                         newRegions.push(tencentRegionMap[value.RegionId])

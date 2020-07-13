@@ -9,6 +9,7 @@ import {
     notification,
     Icon,
 } from "antd";
+import instanceStatusMap from "../../../../../../config/instanceStatus";
 
 
 const openNotificationWithIcon = (msg, desc) => {
@@ -35,7 +36,7 @@ class RebootInstance extends Component {
     handleConfirm = () => {
         if (this.props.record && 'InstanceId' in this.props.record) {
             let {Status, InstanceId} = this.props.record;
-            if (Status !== "Running") {
+            if (Status !== instanceStatusMap.StatusRunning) {
                 openNotificationWithIcon(
                     `can not reboot instance [${InstanceId}]`,
                     `only instance not [Running] can be reboot`

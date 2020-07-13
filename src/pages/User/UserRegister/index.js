@@ -9,8 +9,6 @@ import {
     Input,
     Radio,
     Button,
-    PageHeader,
-    Divider,
 } from 'antd';
 import {connect} from 'dva';
 import styles from './index.less';
@@ -258,7 +256,6 @@ class UserRegisterPage extends Component {
         return (
             <div>
                 <UserRegisterPageHeader resetFun={this.handleCancel}/>
-                {/*<Divider type={'horizontal'}/>*/}
                 <div className={styles.container}>
                     <UserRegisterForm
                         wrappedComponentRef={this.saveFormRef}

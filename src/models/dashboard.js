@@ -32,39 +32,41 @@ export default {
               ]
             * */
         },
-        hostsCount: 0,
-        usersCount: 0,
+        hostsCount: null,
+        usersCount: null,
+        notLogedNotifyCount: 0
     },
     effects: {
         * getInstanceCount(action, {call, put}) {
             const resp = yield call(svcGetAllInstancesStatusList, action.payload);
-            if (resp.data.status === 'error') {
-                yield put({type: "notification", payload: resp.data});
+            if (resp.data.status === 'ok') {
+                yield put({
+                    type: "updateInstancesStatus",
+                    payload: {
+                        platType: action.payload.platType,
+                        regionId: action.payload.regionId,
+                        instancesStatus: resp.data.data.instancesStatus,
+                    }
+                })
+            } else {
+                yield put({type:"notification", payload: resp.data})
             }
-            yield put({
-                type: "updateInstancesStatus",
-                payload: {
-                    platType: action.payload.platType,
-                    regionId: action.payload.regionId,
-                    instancesStatus: resp.data.data.instancesStatus,
-                }
-            })
-        }
-        ,
+        },
         * getHostCount(action, {call, put}) {
             const resp = yield call(svcGetHostList, action.payload);
-            if (resp.data.status === 'error') {
-                yield put({type: "notification", payload: resp.data});
+            if (resp.data.status === 'ok') {
+                yield put({type: "updateHostCount", payload: resp.data})
+            } else {
+                yield put({type:"notification", payload: resp.data})
             }
-            yield put({type: "updateHostCount", payload: resp.data})
-        }
-        ,
+        },
         * getUserCount(action, {call, put}) {
             const resp = yield call(svcGetUserList, action.payload);
-            if (resp.data.status === 'error') {
-                yield put({type: "notification", payload: resp.data});
+            if (resp.data.status === 'ok') {
+                yield put({type: "updateUserCount", payload: resp.data})
+            } else {
+                yield put({type:"notification", payload: resp.data})
             }
-            yield put({type: "updateUserCount", payload: resp.data})
         },
     }
     ,
@@ -88,6 +90,15 @@ export default {
         },
         updateUserCount(state, action) {
             return Object.assign({}, state, {usersCount: action.payload.data.total})
+        },
+        notification(state, action) {
+            let {msg, status} = action.payload;
+            if (status === 'ok') {
+                message.success(msg)
+            } else {
+                message.error(msg)
+            }
+            return state
         },
         subscriptions: {}
     }

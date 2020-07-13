@@ -21,7 +21,20 @@ function svcGetHostList(reqData) {
                 page: pageNum,
                 size: pageSize,
             }
-        })
+        }
+    ).then(
+        value => {
+            let total = value.data.data.total;
+            let hosts = value.data.data.hosts;
+            let status = value.data.status;
+            value.data.data = {
+                "total": (status === 'ok') ? total : 0,
+                "hosts": (status === 'ok') ? hosts : [],
+                "currentPageNum": -1,
+            };
+            return value
+        }
+    )
 }
 
 function svcGetHostByUUID(reqData) {

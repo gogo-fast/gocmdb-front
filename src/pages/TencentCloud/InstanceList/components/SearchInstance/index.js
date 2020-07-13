@@ -47,7 +47,7 @@ class SearchInstance extends Component {
             payload: {ws: ws}
         });
         ws.onmessage = msgEv => {
-            // rebuild data struct same to hostlist response
+            // rebuild data struct same to host list response
             let {status, msg, data} = JSON.parse(msgEv.data);
             let newResp = {
                 "status": status,

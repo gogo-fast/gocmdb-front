@@ -5,7 +5,6 @@ import MySider from "./Sider";
 import MyHeader from "./Header";
 import MainContent from "./Content";
 import MyFooter from "./Footer";
-// import {ConfigDrawer} from "./ConfigDrawer";
 import loadTheme from "../../utils/themeLoder";
 import {
     getMenuKeyMapFromPathName,
@@ -25,10 +24,14 @@ class BasicLayout extends Component {
 
     // initialize side menus and theme before mounting the react node.
     componentWillMount() {
+        // there should reload current user from local story while refresh web page every time
+        // do not get current user from models.login.currentUser, since models.login.currentUser
+        // is in memory, it will lose wile refresh web page, it only exist after login action.
         let currentUser = loadLocalStory('user');
         if (!currentUser || !("userId" in currentUser)) {
             return
         }
+
         this.props.dispatch({
             type: "login/reStoreCurrentUserMem",
             payload: {data: currentUser}
@@ -42,13 +45,13 @@ class BasicLayout extends Component {
         });
 
         let pathName = this.props.location.pathname;
-        let {userType} = loadLocalStory('user');
+        let {userType} = currentUser;
         this.props.dispatch({
             type: "layout/updateMenuKeys",
             payload: {
                 menus: recursiveMenus(menuList, userType),
-                openKeys: getMenuKeyMapFromPathName(pathName, "/home").openKeys,
-                selectedKeys: getMenuKeyMapFromPathName(pathName, '/home').selectedKeys,
+                openKeys: getMenuKeyMapFromPathName(pathName, "/dashboard").openKeys,
+                selectedKeys: getMenuKeyMapFromPathName(pathName, '/dashboard').selectedKeys,
             }
         })
     }

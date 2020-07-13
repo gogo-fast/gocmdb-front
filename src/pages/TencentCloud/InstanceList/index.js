@@ -296,7 +296,7 @@ class InstanceList extends Component {
             renderAction(columns)
         }
         let instanceList = [];
-        this.props.instances && this.props.instances.map(
+        this.props.instances.map(
             (value) => {
                 let data = {};
                 for (let k of this.props.selectedColumns) {

@@ -17,7 +17,6 @@ import {
     america,
     india,
     united_arab_emirates,
-    russia,
 } from '../../../../../../public/flags/regionFlags.js'
 import aliyunRegionMap from "../../../../../../config/aliyunRegionConfig";
 import styles from './index.less';
