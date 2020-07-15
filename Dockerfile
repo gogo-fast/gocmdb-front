@@ -5,7 +5,7 @@ WORKDIR /reactApp/
 
 COPY . .
 
-RUN npm i yarn tyarn -g \
+RUN npm i tyarn -g \
     && tyarn global add umi@^2.0.0 \
     && tyarn install \
     && npm run build
