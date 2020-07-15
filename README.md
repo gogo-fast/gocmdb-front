@@ -91,7 +91,7 @@ After finished backend deployment, you could continue the following steps.
     tyarn start
     ```
 
-### access web browser
+### Access web browser
 
 - Modify hosts:
 
@@ -131,7 +131,7 @@ After finished backend deployment, you could continue the following steps.
     ```
 
 
-## screenshot
+## Screenshot
 
 ![1591866160033](assets/1591866160033.png)
 
