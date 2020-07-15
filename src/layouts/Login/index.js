@@ -16,7 +16,6 @@ import loadLocalStory from "../../utils/loadLocalStory";
 @withRouter
 class CMDBLoginForm extends Component {
 
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -31,7 +30,6 @@ class CMDBLoginForm extends Component {
 
 
     render() {
-
         const {getFieldDecorator} = this.props.form;
         return (
             <div className={styles['login-div']}>

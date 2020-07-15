@@ -53,12 +53,12 @@ class RightContent extends Component {
                         }
                     }
                 );
-                let infoOpenKeys = this.props.siderCollapsed ? [] : distinctArrayPush(this.props.openKeys, getMenuKeyMapFromPathName("/account/info", "/home").openKeys);
+                let infoOpenKeys = this.props.siderCollapsed ? [] : distinctArrayPush(this.props.openKeys, getMenuKeyMapFromPathName("/account/info", "/dashboard").openKeys);
                 this.props.dispatch({
                     type: "layout/updateMenuKeys",
                     payload: {
                         openKeys: infoOpenKeys,
-                        selectedKeys: getMenuKeyMapFromPathName("/account/info", "/home").selectedKeys,
+                        selectedKeys: getMenuKeyMapFromPathName("/account/info", "/dashboard").selectedKeys,
                     }
                 });
                 break;
@@ -72,12 +72,12 @@ class RightContent extends Component {
                         }
                     }
                 );
-                let settingsOpenKeys = this.props.siderCollapsed ? [] : distinctArrayPush(this.props.openKeys, getMenuKeyMapFromPathName("/account/settings", "/home").openKeys);
+                let settingsOpenKeys = this.props.siderCollapsed ? [] : distinctArrayPush(this.props.openKeys, getMenuKeyMapFromPathName("/account/settings", "/dashboard").openKeys);
                 this.props.dispatch({
                     type: "layout/updateMenuKeys",
                     payload: {
                         openKeys: settingsOpenKeys,
-                        selectedKeys: getMenuKeyMapFromPathName("/account/settings", "/home").selectedKeys,
+                        selectedKeys: getMenuKeyMapFromPathName("/account/settings", "/dashboard").selectedKeys,
                     }
                 });
                 break;

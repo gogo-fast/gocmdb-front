@@ -40,10 +40,10 @@ export default {
                     if ('lastPathName' in d[_uid]) {
                         router.push(d[_uid]['lastPathName']);
                     } else {
-                        router.push('/home');
+                        router.push('/dashboard');
                     }
                 } else {
-                    router.push('/home');
+                    router.push('/dashboard');
                 }
             } else {
                 message.error(msg)

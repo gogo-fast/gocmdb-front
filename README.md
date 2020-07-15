@@ -129,8 +129,9 @@ After finished backend deployment, you could continue the following steps.
     ```shell
     docker run --name cmdb_fg -d -p 80:8000 cmdb-fg:v0.1
     ```
-  
-### screenshot
+
+
+## screenshot
 
 ![1591866160033](assets/1591866160033.png)
 

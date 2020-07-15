@@ -9,7 +9,6 @@ axios.defaults.withCredentials = true;
 
 import {
     apiUrl,
-    ImgUrl,
 } from "../utils/constants";
 
 
