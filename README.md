@@ -127,7 +127,7 @@ After finished backend deployment, you could continue the following steps.
 - Run
 
     ```shell
-    docker run --name cmdb_fg -d -p 80:8000 cmdb-fg:v0.1
+    docker run --name cmdb_fg -d -p 8888:8000 cmdb-fg:v0.1
     ```
 
 
