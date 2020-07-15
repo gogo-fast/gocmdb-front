@@ -5,9 +5,9 @@ WORKDIR /reactApp/
 
 COPY . .
 
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org \
-    && cnpm install umi@^2.0.0 -g \
-    && cnpm install \
+RUN npm i yarn tyarn -g \
+    && tyarn global add umi@2.0.0 \
+    && tyarn install \
     && npm run build
 
 
