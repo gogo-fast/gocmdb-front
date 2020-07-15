@@ -83,7 +83,7 @@ After finished backend deployment, you could continue the following steps.
     umi -v
     ```
 
-### Start dev server
+### Start dev web server
 
 - start server
 
@@ -91,13 +91,17 @@ After finished backend deployment, you could continue the following steps.
     tyarn start
     ```
 
+
 ### Access web browser
 
-- Modify hosts:
+
+- Modify hosts on your pc:
 
     ```shell
-    <api_server_ip>   api.img.cmdb.com  api.go.cmdb.com
+    <web_server_ip>  go.cmdb.com
+    <api_server_ip>  img.cmdb.com  api.cmdb.com
     ``` 
+
 
 - `http://go.cmdb.com:8888`
 
