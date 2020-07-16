@@ -100,7 +100,7 @@ After finished backend deployment, you could continue the following steps.
     ```shell
     <web_server_ip>  go.cmdb.com
     <api_server_ip>  img.cmdb.com  api.cmdb.com
-    ``` 
+    ```
 
 
 - `http://go.cmdb.com:8888`
@@ -135,10 +135,51 @@ After finished backend deployment, you could continue the following steps.
     ```
 
 
+
 ## Screenshot
 
-![1591866160033](assets/1591866160033.png)
+![1594209798929](assets/1594209798929.png)
 
 
 
-![1591866068374](assets/1591866068374.png)
+![1594540738026](assets/1594540738026.png)
+
+
+
+![1594540782926](assets/1594540782926.png)
+
+
+
+![1594540823668](assets/1594540823668.png)
+
+
+
+![1594540879670](assets/1594540879670.png)
+
+
+
+![1594540905362](assets/1594540905362.png)
+
+
+
+![1594540973244](assets/1594540973244.png)
+
+
+
+![1594541012071](assets/1594541012071.png)
+
+
+
+![1594541081426](assets/1594541081426.png)
+
+
+
+![1594541104944](assets/1594541104944.png)
+
+
+
+![1594541458812](assets/1594541458812.png)
+
+
+
+![1594541485234](assets/1594541485234.png)
