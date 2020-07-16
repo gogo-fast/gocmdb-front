@@ -138,10 +138,6 @@ After finished backend deployment, you could continue the following steps.
 
 ## Screenshot
 
-![1594209798929](assets/1594209798929.png)
-
-
-
 ![1594540738026](assets/1594540738026.png)
 
 
