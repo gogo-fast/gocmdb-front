@@ -12,6 +12,7 @@ import ItisMe from '../components/ItisMe';
 import styles from './index.less';
 import loadLocalStory from "../../../../../utils/loadLocalStory";
 import MyBadge from "../components/MyBadge";
+import {imgUrl} from "../../../../../utils/constants";
 
 
 @connect(
@@ -132,7 +133,7 @@ class RightContent extends Component {
                 </div>
 
                 <div className={styles['right-item']}>
-                    <Avatar size="large" src={this.props.avatarUrl ? this.props.avatarUrl : headImg}> </Avatar>
+                    <Avatar size="large" src={`${imgUrl}${this.props.avatarUrl}` ? this.props.avatarUrl : headImg}> </Avatar>
                 </div>
 
                 <div className={styles['right-item']}>
