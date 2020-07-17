@@ -189,7 +189,7 @@ class UserList extends Component {
                 <UserListPageHeader/>
                 <div className={styles.container}>
                     <Table
-                        bordered
+                        // bordered
                         size="small"
                         columns={columns}
                         dataSource={this.props.users}

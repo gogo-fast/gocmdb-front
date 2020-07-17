@@ -313,7 +313,7 @@ class InstanceList extends Component {
                 <InstanceListPageHeader/>
                 <div className={styles.container}>
                     <Table
-                        bordered
+                        // bordered
                         size="small"
                         columns={(this.props.instances && this.props.instances.length !== 0) ? columns : null}
                         dataSource={instanceList}
