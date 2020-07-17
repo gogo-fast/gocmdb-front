@@ -14,13 +14,12 @@ export default {
     namespaces: "avatar",
     state: {
         avatarUrl: null,
-        // avatarData: null,
     },
 
     effects: {
         * uploadAvatar(action, {call, put}) {
             const resp = yield call(svcUploadAvatar, action.payload);
-            // {"data":{"fileUrl":"http://127.0.0.1:8000/user/70/3fb19a44-3c25-428b-84a0-1429395a6e26.jpg"},"msg":"upload file success","status":"ok"}
+            // resp: {"data":{"fileUrl":"/img/user/70/3fb19a44-3c25-428b-84a0-1429395a6e26.jpg"},"msg":"upload file success","status":"ok"}
             yield put({type: "notification", payload: resp.data});
             yield put({type: "updateAvatar", payload: resp.data});
         },

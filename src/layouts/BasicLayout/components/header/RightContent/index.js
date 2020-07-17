@@ -133,7 +133,7 @@ class RightContent extends Component {
                 </div>
 
                 <div className={styles['right-item']}>
-                    <Avatar size="large" src={`${imgUrl}${this.props.avatarUrl}` ? this.props.avatarUrl : headImg}> </Avatar>
+                    <Avatar size="large" src={this.props.avatarUrl ? `${imgUrl}${this.props.avatarUrl}` : headImg}/>
                 </div>
 
                 <div className={styles['right-item']}>
