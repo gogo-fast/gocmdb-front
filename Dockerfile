@@ -18,5 +18,5 @@ COPY --from=builder /reactApp/dist/ /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/cmdb-fg.conf
 COPY Shanghai /etc/localtime
 
-EXPOSE 8000
+EXPOSE 8888
 CMD ["nginx", "-g", "daemon off;"]

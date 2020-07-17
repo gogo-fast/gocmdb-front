@@ -131,7 +131,7 @@ After finished backend deployment, you could continue the following steps.
 - Run
 
     ```shell
-    docker run --name cmdb_fg -d -p 8888:8000 cmdb-fg:v0.1
+    docker run --name cmdb_fg -d --link cmdb-api-server:go.cmdb.com -p 8888:8888 cmdb-fg:v0.1
     ```
 
 

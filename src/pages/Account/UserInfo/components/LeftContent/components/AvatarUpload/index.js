@@ -2,6 +2,7 @@ import {connect} from 'dva';
 import React, {Component} from 'react';
 import {Upload, Icon, message} from 'antd';
 import styles from './index.less'
+import {imgUrl} from "../../../../../../../utils/constants";
 
 
 function beforeUpload(file) {
@@ -55,7 +56,7 @@ class AvatarUpload extends Component {
                     beforeUpload={beforeUpload}
                 >
                     {this.props.avatarUrl ?
-                        <img src={this.props.avatarUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+                        <img src={`${imgUrl}this.props.avatarUrl`} alt="avatar" style={{width: '100%'}}/> : uploadButton}
                 </Upload>
             </div>
         );
