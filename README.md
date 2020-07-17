@@ -6,6 +6,16 @@ You should deploy the backend first. Deploy backend go to `->` [gocmdb-backend](
 
 After finished backend deployment, you could continue the following steps.
 
+
+
+## Structure
+
+![1595000495522](assets/1595000495522.png)
+
+
+
+
+
 ## Build on `linux mint` manually
 
 ### Install nodejs
