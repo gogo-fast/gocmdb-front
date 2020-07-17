@@ -99,7 +99,6 @@ After finished backend deployment, you could continue the following steps.
 
     ```shell
     <web_server_ip>  go.cmdb.com
-    <api_server_ip>  img.cmdb.com  api.cmdb.com
     ```
 
 
