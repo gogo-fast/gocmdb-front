@@ -56,7 +56,7 @@ class AvatarUpload extends Component {
                     beforeUpload={beforeUpload}
                 >
                     {this.props.avatarUrl ?
-                        <img src={`${imgUrl}this.props.avatarUrl`} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+                        <img src={`${imgUrl}${this.props.avatarUrl}`} alt="avatar" style={{width: '100%'}}/> : uploadButton}
                 </Upload>
             </div>
         );
