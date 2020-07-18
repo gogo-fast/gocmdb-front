@@ -16,6 +16,8 @@ After finished backend deployment, you could continue the following steps.
 
 
 
+
+
 ## Build on `linux mint` manually
 
 ### Install nodejs
