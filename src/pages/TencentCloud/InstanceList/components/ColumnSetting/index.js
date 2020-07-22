@@ -107,7 +107,7 @@ class InstanceListColumnSetting extends Component {
                 <span>
                     <Icon type="setting"/>
                     &nbsp;&nbsp;Select columns&nbsp;&nbsp;
-                    <Icon type="caret-left"/>
+                    <Icon type="caret-down"/>
                 </span>
 
             </Dropdown>

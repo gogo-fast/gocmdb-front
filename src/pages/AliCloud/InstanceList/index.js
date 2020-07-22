@@ -6,6 +6,7 @@ import {
     Icon,
     Badge,
     Spin,
+    Typography,
 } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
@@ -29,6 +30,7 @@ import InstanceDetails from "./components/InstanceDetails";
 import iconStyles from "../../../commons/iconfonts/icon.css";
 import styles from './index.less';
 
+const {Paragraph} = Typography;
 
 @connect(
     ({aliCloud, loading, login}) => ({
@@ -235,7 +237,11 @@ class InstanceList extends Component {
             column.title = instanceListColumnMap[k];
             column.dataIndex = k;
             column.key = k;
-
+            if (k === 'InstanceId') {
+                column.render = InstanceId => {
+                    return <Paragraph sytle={{marginBottom: '0px'}} copyable>{InstanceId}</Paragraph>
+                }
+            }
             if (k === 'Status') {
                 column.render = Status => {
                     switch (Status) {

@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
-import {connect} from 'dva';
 import {
     PageHeader,
-    Descriptions,
 } from 'antd';
 
 import Refresh from "../Refresh";
 import SearchInstance from "../SearchInstance";
-import Region from "../Region";
-import InstanceListColumnSetting from "../ColumnSetting";
 import iconStyles from '../../../../../commons/iconfonts/icon.css';
+import ToolsBar from "../ToolsBar";
 
 
-@connect()
 class InstanceListPageHeader extends Component {
+
     render() {
         return (
             <div>
@@ -31,12 +28,7 @@ class InstanceListPageHeader extends Component {
                         <SearchInstance key="2"/>,
                     ]}
                 >
-                    <Descriptions size="small" column={4}>
-                        <Descriptions.Item label="Select region"><Region/></Descriptions.Item>
-                        <Descriptions.Item>
-                            <InstanceListColumnSetting/>
-                        </Descriptions.Item>
-                    </Descriptions>
+                    <ToolsBar/>
                 </PageHeader>
             </div>
         );

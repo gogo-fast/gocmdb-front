@@ -44,7 +44,6 @@ function parseTimeStamp(s) {
     }
 }
 
-
 export {
     formatDayTime,
     formatTimeStamp,

@@ -13,8 +13,6 @@ class Dashboard extends Component {
             <div>
                 <DashboardPageHeader/>
                 <div className={styles['dashboard-container']}>
-                    {/*<AliInstanceCount/>*/}
-                    {/*<TencentInstanceCount/>*/}
                     <InstanceCount/>
                 </div>
             </div>

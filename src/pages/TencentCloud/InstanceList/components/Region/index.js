@@ -144,9 +144,12 @@ class Region extends Component {
                 }
             >
                 <span className={styles['default-region']}>
+                    <Icon type="global" />
+                    &nbsp;&nbsp;
                     <span>
                         {tencentRegionMap[this.props.defaultRegionId].RegionName}
                     </span>
+                    &nbsp;&nbsp;
                     <Icon type="caret-down"/>
                 </span>
             </Dropdown>

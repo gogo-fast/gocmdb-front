@@ -6,6 +6,7 @@ import {
     Icon,
     Badge,
     Spin,
+    Typography,
 } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
@@ -20,8 +21,6 @@ import {
 import {
     instanceListColumnMap,
     defaultMainColumns,
-    mainColumns,
-    expandColumns,
 } from '../../../../config/instanceListColumnMap'
 import instanceStatusMap from "../../../../config/instanceStatus";
 import InstanceListPageHeader from "./components/InstanceListPageHeader";
@@ -29,6 +28,7 @@ import InstanceDetails from "./components/InstanceDetails";
 import iconStyles from "../../../commons/iconfonts/icon.css";
 import styles from './index.less';
 
+const {Paragraph} = Typography;
 
 @connect(
     ({tencentCloud, loading, login}) => ({
@@ -58,12 +58,12 @@ class InstanceList extends Component {
             }
         );
 
-        let ws = new WebSocket(`${apiWsUrl}/cloud/ws/instance/list?platType=tencent&regionId=${regionId}&page=${pageNum}&size=${pageSize}`);
+        let instancesWs = new WebSocket(`${apiWsUrl}/cloud/ws/instance/list?platType=tencent&regionId=${regionId}&page=${pageNum}&size=${pageSize}`);
         this.props.dispatch({
             type: "tencentCloud/updateInstanceWebSocket",
-            payload: {ws: ws}
+            payload: {instancesWs: instancesWs}
         });
-        ws.onmessage = msgEv => {
+        instancesWs.onmessage = msgEv => {
             this.props.dispatch(
                 {
                     type: "tencentCloud/updateInstances",
@@ -124,6 +124,7 @@ class InstanceList extends Component {
         // or old websocket alive still, page will blink after change page number or page size.
         // important!!!
         if (this.props.instancesWs) this.props.instancesWs.close();
+
     }
 
 
@@ -144,7 +145,6 @@ class InstanceList extends Component {
         });
 
         this.actionFunc(this.props.defaultRegionId, pageNum, pageSize);
-
     };
 
     onShowSizeChange = (pageNum, pageSize) => {
@@ -236,6 +236,13 @@ class InstanceList extends Component {
             column.title = instanceListColumnMap[k];
             column.dataIndex = k;
             column.key = k;
+            if (k === 'InstanceId') {
+                column.render = InstanceId => {
+                    return <span>
+                            <Paragraph copyable>{InstanceId}</Paragraph>
+                        </span>
+                }
+            }
             if (k === 'Status') {
                 column.render = Status => {
                     switch (Status) {
@@ -281,14 +288,7 @@ class InstanceList extends Component {
                     return <span>{Bandwidth} Mbit/s</span>
                 }
             }
-            // if (k === 'ramPercent') {
-            //     column.render = ramPercent => {
-            //         return <Progress percent={ramPercent} type={'circle'} strokeWidth={10}
-            //                          format={ramPercent => ramPercent + '%'}
-            //                          strokeColor={ramPercent < 80 ? '#1890ff' : '#f5222d'}
-            //                          width={45}/>
-            //     }
-            // }
+
             columns.push(column);
         }
 

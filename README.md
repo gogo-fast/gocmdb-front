@@ -173,6 +173,14 @@ After finished backend deployment, you could continue the following steps.
 
 
 
+![1595442656251](assets/1595442656251.png)
+
+
+
+![1595442806502](assets/1595442806502.png)
+
+
+
 ![1594541012071](assets/1594541012071.png)
 
 
@@ -190,3 +198,6 @@ After finished backend deployment, you could continue the following steps.
 
 
 ![1594541485234](assets/1594541485234.png)
+
+
+

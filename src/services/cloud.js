@@ -211,6 +211,16 @@ function svcDeleteInstanceById(reqData) {
     )
 }
 
+function svcLoadMonitorData(reqData) {
+    let {platType, regionId, instanceId, metricName} = reqData;
+    return axios(
+        {
+            method: "POST",
+            url: `${apiUrl}/cloud/instance/monitor`,
+            data: {platType, regionId, instanceId, metricName,},
+        }
+    )
+}
 
 export {
     svcGetSecurityGroups,
@@ -222,5 +232,6 @@ export {
     svcRebootInstanceById,
     svcDeleteInstanceById,
     svcLoadInstancesStatusList,
-    svcGetAllInstancesStatusList
+    svcGetAllInstancesStatusList,
+    svcLoadMonitorData,
 }
