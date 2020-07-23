@@ -6,7 +6,6 @@ import {
     Icon,
     Badge,
     Spin,
-    Typography,
 } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
@@ -25,10 +24,10 @@ import {
 import instanceStatusMap from "../../../../config/instanceStatus";
 import InstanceListPageHeader from "./components/InstanceListPageHeader";
 import InstanceDetails from "./components/InstanceDetails";
+import CopyedText from "../../../commons/CopyedText";
 import iconStyles from "../../../commons/iconfonts/icon.css";
 import styles from './index.less';
 
-const {Paragraph} = Typography;
 
 @connect(
     ({tencentCloud, loading, login}) => ({
@@ -223,8 +222,8 @@ class InstanceList extends Component {
             c = null;
         }
         return (
-            c ? <InstanceDetails record={c}/>
-                : <Spin/>
+            // 需要在这里传入表格扩展行的展开状态 expanded 属性，为监控子组件使用。
+            c ? <InstanceDetails record={c} expanded={expanded}/> : <Spin/>
         )
     };
 
@@ -237,11 +236,7 @@ class InstanceList extends Component {
             column.dataIndex = k;
             column.key = k;
             if (k === 'InstanceId') {
-                column.render = InstanceId => {
-                    return <span>
-                            <Paragraph copyable>{InstanceId}</Paragraph>
-                        </span>
-                }
+                column.render = InstanceId => <CopyedText text={InstanceId}/>
             }
             if (k === 'Status') {
                 column.render = Status => {

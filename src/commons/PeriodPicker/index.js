@@ -10,10 +10,33 @@ class Period extends Component {
     };
 
     render() {
-        return <Select size={"small"} defaultValue='300' value={this.props.p} onChange={this.handleChange} style={{width: 110}}>
-            <Option key="1" value={'10'}>10 seconds</Option>
-            <Option key="2" value={'60'}>1 minute</Option>
-            <Option key="3" value={'300'}>5 minutes</Option>
+        let optionValueList = [];
+        let valueList;
+        if (!this.props.valuelist) {
+            valueList = [parseInt(this.props.p)]
+        } else {
+            valueList = this.props.valuelist
+        }
+        let l = valueList.length;
+        for (let i = 0; i < l; i++) {
+            let v = valueList[i];
+            let _v = Math.floor(v / 60);
+            // console.log("v:", v, "_v", _v);
+            // console.log(`${_v}`, typeof `${_v}`);
+            switch (_v) {
+                case 0 :
+                    optionValueList.push(<Option key={`${i}`} value={`${v}`}>{v} seconds</Option>);
+                    break;
+                case 1 :
+                    optionValueList.push(<Option key={`${i}`} value={`${v}`}>{_v} minute</Option>);
+                    break;
+                default:
+                    optionValueList.push(<Option key={`${i}`} value={`${v}`}>{_v} minutes</Option>)
+            }
+        }
+
+        return <Select size={"small"} value={this.props.p} onChange={this.handleChange} style={{width: 110}}>
+            {optionValueList}
         </Select>;
     }
 }

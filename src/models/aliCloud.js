@@ -12,13 +12,14 @@ import {
     message
 } from 'antd';
 import aliyunRegionMap from "../../config/aliyunRegionConfig";
+import moment from "moment";
 
 
 export default {
     namespaces: "aliCloud",
     state: {
         regions: [],
-        defaultRegionId: "cn-qingdao",
+        defaultRegionId: "cn-zhangjiakou",
         sgs: [],
         selectedColumns: [],
         instances: [],
@@ -26,6 +27,24 @@ export default {
         instanceListPageNum: 1,
         instanceListPageSize: 5,
         instancesWs: null,
+        startTime: moment(Date.now() - 1000 * 600),
+        endTime: moment(Date.now()),
+        period: '60',
+        durationType: "fixed",
+        monitorData: {
+            cpuusage: {
+                /*
+                * instanceId1 : {Timestamps:[], Values:[]}
+                * instanceId2 : {Timestamps:[], Values:[]}
+                * */
+            },
+            memused: {
+                /*
+                * instanceId1 : {Timestamps:[], Values:[]}
+                * instanceId2 : {Timestamps:[], Values:[]}
+                * */
+            }
+        }
     },
     effects: {
         * getRegions(action, {call, put}) {
@@ -86,7 +105,6 @@ export default {
                     }
                 }
             );
-            // return Object.assign({}, state, {regions: action.payload.data})
             return Object.assign({}, state, {regions: newRegions})
         },
         updateDefaultRegionId(state, action) {
@@ -116,7 +134,21 @@ export default {
         },
         updateInstanceWebSocket(state, action) {
             return Object.assign({}, state, {instancesWs: action.payload.ws})
-        }
+        },
+        updateStartTime(state, action) {
+            return Object.assign({}, state, {startTime: action.payload})
+        },
+        updateEndTime(state, action) {
+            return Object.assign({}, state, {endTime: action.payload})
+
+        },
+        updatePeriod(state, action) {
+            return Object.assign({}, state, {period: action.payload})
+
+        },
+        updateDurationType(state, action) {
+            return Object.assign({}, state, {durationType: action.payload})
+        },
     },
     subscriptions: {}
 }

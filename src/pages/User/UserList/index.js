@@ -128,6 +128,7 @@ class UserList extends Component {
     };
 
     expandedRowRender = (record, index, indent, expanded) => {
+        console.log("expanded in user list page", index, indent, expanded)
         return (
             <UserDetails record={record}/>
         )

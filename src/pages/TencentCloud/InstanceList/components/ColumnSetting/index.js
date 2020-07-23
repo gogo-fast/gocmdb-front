@@ -5,12 +5,11 @@ import {
 } from 'antd';
 import {
     instanceListColumnMap,
-    defaultMainColumns,
     mainColumns
 } from '../../../../../../config/instanceListColumnMap'
+import compareSort from "../../../../../utils/compareSort";
 
 import styles from './index.less'
-import compareSort from "../../../../../utils/compareSort";
 
 
 @connect(

@@ -5,36 +5,11 @@ import {
     Icon,
 } from 'antd';
 
-import {
-    china,
-    singapore,
-    australia,
-    malaysia,
-    indonesia,
-    japan,
-    germany,
-    england,
-    america,
-    india,
-    united_arab_emirates,
-} from '../../../../../../public/flags/regionFlags.js'
 import aliyunRegionMap from "../../../../../../config/aliyunRegionConfig";
 import styles from './index.less';
 import {apiWsUrl} from "../../../../../utils/constants";
-
-const countryFlagMap = {
-    "china": china,
-    "singapore": singapore,
-    "australia": australia,
-    "malaysia": malaysia,
-    "indonesia": indonesia,
-    "japan": japan,
-    "germany": germany,
-    "england": england,
-    "america": america,
-    "india": india,
-    "united_arab_emirates": united_arab_emirates,
-};
+import countryFlagMap from "../../../../../../config/countryFlagMap";
+import aliRegionMap from "../../../../../../config/aliyunRegionConfig";
 
 
 @connect(
@@ -136,9 +111,12 @@ class Region extends Component {
                 }
             >
                 <span className={styles['default-region']}>
+                    <Icon type="global"/>
+                    &nbsp;&nbsp;
                     <span>
-                        {aliyunRegionMap[this.props.defaultRegionId].RegionName}
+                        {aliRegionMap[this.props.defaultRegionId].RegionName}
                     </span>
+                    &nbsp;&nbsp;
                     <Icon type="caret-down"/>
                 </span>
             </Dropdown>

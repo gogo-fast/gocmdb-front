@@ -22,12 +22,12 @@ import {
 
 
 @connect(
-    ({tencentCloud, loading}) => ({
-        startTime: tencentCloud.startTime,
-        endTime: tencentCloud.endTime,
-        period: tencentCloud.period,
-        durationType: tencentCloud.durationType,
-        loading: loading.models.tencentCloud,
+    ({aliCloud, loading}) => ({
+        startTime: aliCloud.startTime,
+        endTime: aliCloud.endTime,
+        period: aliCloud.period,
+        durationType: aliCloud.durationType,
+        loading: loading.models.aliCloud,
     })
 )
 class InstanceMonitor extends Component {
@@ -40,8 +40,6 @@ class InstanceMonitor extends Component {
 
     loadMonitorData = (echarts_instance) => {
         this.state.ws.onmessage = msgEv => {
-            console.log('###### new monitor data coming ########');
-
             let t = [];
             let v = [];
             let {status, msg, data} = JSON.parse(msgEv.data);
@@ -51,7 +49,9 @@ class InstanceMonitor extends Component {
                 if (data.length > 0) {
                     let [{MetricName, Timestamps, Values}] = data;
                     Timestamps.forEach(
-                        value => t.push(moment.unix(value).format('HH:mm:ss'))
+                        // timestamp of aliyun is milliseconds based, while tenCent cloud is second based.
+                        // so here use moment(), while moment.unix() used in tenCent cloud.
+                        value => t.push(moment(value).format('HH:mm:ss'))
                     );
                     Values.forEach(
                         value => v.push(value.toFixed(2))
@@ -90,7 +90,7 @@ class InstanceMonitor extends Component {
     sendMata = (ws, metricName, startTime, endTime, period, durationType) => {
         // send action while one of startTime, endTime, period changed
         let data = {
-            platType: 'tencent',
+            platType: 'aliyun',
             regionId: this.props.regionId,
             metricName: metricName,
             startTime: startTime.format("YYYY-MM-DDTHH:mm:ssZ"),
@@ -102,8 +102,7 @@ class InstanceMonitor extends Component {
         ws.send(JSON.stringify(data));
     };
 
-    heartbeat = () => this.sendMata(this.state.ws, this.props.metricName, this.props.startTime, this.props.endTime, this.props.period, this.props.durationType)
-
+    heartbeat = () => this.sendMata(this.state.ws, this.props.metricName, this.props.startTime, this.props.endTime, this.props.period, this.props.durationType);
 
     buildWsConnection() {
         if (this.state.ws) {
@@ -119,7 +118,7 @@ class InstanceMonitor extends Component {
         let durationType = this.props.durationType;
         // send action after websocket established
         let data = {
-            platType: 'tencent',
+            platType: 'aliyun',
             regionId: this.props.regionId,
             metricName: metricName,
             startTime: startTime.format("YYYY-MM-DDTHH:mm:ssZ"),
@@ -154,7 +153,6 @@ class InstanceMonitor extends Component {
         // use addEventListener make every chart could resize.
         // use window.onresize can only resize the last one.
         window.addEventListener('resize', function () {
-            // console.log(chartContainer.clientWidth, chartContainer.clientHeight);
             myChart.resize({
                 width: chartContainer.clientWidth,
                 height: chartContainer.clientHeight

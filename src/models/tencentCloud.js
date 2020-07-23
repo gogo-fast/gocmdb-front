@@ -28,7 +28,6 @@ export default {
         instanceListPageNum: 1,
         instanceListPageSize: 5,
         instancesWs: null,
-        monitorWs: null,
         startTime: moment(Date.now() - 1000 * 600),
         endTime: moment(Date.now()),
         period: '10',
@@ -90,18 +89,10 @@ export default {
     reducers: {
         updateInstances(state, action) {
             let currentPageNum = action.payload.data.currentPageNum;
-            // let monitorData = Object.assign({}, state.monitorData);
-            // action.payload.data.instances.forEach(
-            //     value => {
-            //         monitorData.cpuusage[value.InstanceId] = {Timestamps: [], Values: []};
-            //         monitorData.memused[value.InstanceId] = {Timestamps: [], Values: []}
-            //     }
-            // );
             return Object.assign({}, state, {
                 instances: action.payload.data.instances,
                 total: action.payload.data.total,
                 instanceListPageNum: (currentPageNum === -1) ? state.instanceListPageNum : currentPageNum,
-                // monitorData: monitorData,
             })
         },
         updateRegions(state, action) {
@@ -116,7 +107,6 @@ export default {
                     }
                 }
             );
-            // return Object.assign({}, state, {regions: action.payload.data})
             return Object.assign({}, state, {regions: newRegions})
         },
         updateDefaultRegionId(state, action) {
@@ -147,9 +137,6 @@ export default {
         updateInstanceWebSocket(state, action) {
             return Object.assign({}, state, {instancesWs: action.payload.instancesWs})
         },
-        updateMonitorWebSocket(state, action) {
-            return Object.assign({}, state, {monitorWs: action.payload.monitorWs})
-        },
         updateStartTime(state, action) {
             return Object.assign({}, state, {startTime: action.payload})
         },
@@ -164,44 +151,6 @@ export default {
         updateDurationType(state, action) {
             return Object.assign({}, state, {durationType: action.payload})
         },
-        // updateMonitorData(state, action) {
-        //     // monitorData: {
-        //     //    cpuusage: {
-        //     //        /*
-        //     //        * instanceId1 : {Timestamps:[], Values:[]}
-        //     //        * instanceId2 : {Timestamps:[], Values:[]}
-        //     //        * */
-        //     //    },
-        //     //    memused: {
-        //     //        /*
-        //     //        * instanceId1 : {Timestamps:[], Values:[]}
-        //     //        * instanceId2 : {Timestamps:[], Values:[]}
-        //     //        * */
-        //     //    }
-        //     //}
-        //     let {data, msg, status} = action.payload;
-        //     if (status === 'ok') {
-        //         let newState = Object.assign({}, state);
-        //         data.forEach(
-        //             value => {
-        //                 let {MetricName, InstanceId, Timestamps, Values} = value;
-        //                 switch (MetricName.toLowerCase()) {
-        //                     case 'cpuusage':
-        //                         newState.monitorData.cpuusage[InstanceId] = {Timestamps, Values};
-        //                         break;
-        //                     case 'memused':
-        //                         newState.monitorData.memused[InstanceId] = {Timestamps, Values};
-        //                         break;
-        //                 }
-        //             }
-        //         );
-        //         console.log(newState);
-        //         return newState
-        //     }
-        //     return state
-        // },
-
-
     },
     subscriptions: {}
 }

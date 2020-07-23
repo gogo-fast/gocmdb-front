@@ -173,6 +173,14 @@ After finished backend deployment, you could continue the following steps.
 
 
 
+![1595514385952](assets/1595514385952.png)
+
+
+
+![1595517053864](assets/1595517053864.png)
+
+
+
 ![1595442656251](assets/1595442656251.png)
 
 

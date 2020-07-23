@@ -5,45 +5,11 @@ import {
     Icon,
 } from 'antd';
 
-import {
-    china,
-    singapore,
-    australia,
-    malaysia,
-    indonesia,
-    japan,
-    germany,
-    england,
-    america,
-    india,
-    united_arab_emirates,
-    korea,
-    russia,
-    thailand,
-    canada,
-} from '../../../../../../public/flags/regionFlags.js'
+
 import tencentRegionMap from "../../../../../../config/tencentRegionConfig";
 import styles from './index.less';
 import {apiWsUrl} from "../../../../../utils/constants";
-
-
-const countryFlagMap = {
-    china,
-    singapore,
-    australia,
-    malaysia,
-    indonesia,
-    japan,
-    germany,
-    england,
-    america,
-    india,
-    united_arab_emirates,
-    russia,
-    korea,
-    thailand,
-    canada,
-};
+import countryFlagMap from "../../../../../../config/countryFlagMap";
 
 
 @connect(
@@ -144,7 +110,7 @@ class Region extends Component {
                 }
             >
                 <span className={styles['default-region']}>
-                    <Icon type="global" />
+                    <Icon type="global"/>
                     &nbsp;&nbsp;
                     <span>
                         {tencentRegionMap[this.props.defaultRegionId].RegionName}

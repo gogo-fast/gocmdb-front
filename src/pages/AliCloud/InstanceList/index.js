@@ -6,7 +6,6 @@ import {
     Icon,
     Badge,
     Spin,
-    Typography,
 } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
@@ -21,16 +20,14 @@ import {
 import {
     instanceListColumnMap,
     defaultMainColumns,
-    mainColumns,
-    expandColumns,
 } from '../../../../config/instanceListColumnMap'
 import instanceStatusMap from "../../../../config/instanceStatus";
 import InstanceListPageHeader from "./components/InstanceListPageHeader";
 import InstanceDetails from "./components/InstanceDetails";
+import CopyedText from "../../../commons/CopyedText";
 import iconStyles from "../../../commons/iconfonts/icon.css";
 import styles from './index.less';
 
-const {Paragraph} = Typography;
 
 @connect(
     ({aliCloud, loading, login}) => ({
@@ -214,6 +211,7 @@ class InstanceList extends Component {
             );
     };
 
+
     expandedRowRender = (record, index, indent, expanded) => {
         let c;
         for (let i in this.props.instances) {
@@ -224,8 +222,8 @@ class InstanceList extends Component {
             c = null;
         }
         return (
-            c ? <InstanceDetails record={c}/>
-                : <Spin/>
+            // 需要在这里传入表格扩展行的展开状态 expanded 属性，为监控子组件使用。
+            c ? <InstanceDetails record={c} expanded={expanded}/> : <Spin/>
         )
     };
 
@@ -238,9 +236,7 @@ class InstanceList extends Component {
             column.dataIndex = k;
             column.key = k;
             if (k === 'InstanceId') {
-                column.render = InstanceId => {
-                    return <Paragraph sytle={{marginBottom: '0px'}} copyable>{InstanceId}</Paragraph>
-                }
+                column.render = InstanceId => <CopyedText text={InstanceId}/>
             }
             if (k === 'Status') {
                 column.render = Status => {
@@ -287,14 +283,6 @@ class InstanceList extends Component {
                     return <span>{Bandwidth} Mbit/s</span>
                 }
             }
-            // if (k === 'ramPercent') {
-            //     column.render = ramPercent => {
-            //         return <Progress percent={ramPercent} type={'circle'} strokeWidth={10}
-            //                          format={ramPercent => ramPercent + '%'}
-            //                          strokeColor={ramPercent < 80 ? '#1890ff' : '#f5222d'}
-            //                          width={45}/>
-            //     }
-            // }
             columns.push(column);
         }
 
@@ -334,7 +322,7 @@ class InstanceList extends Component {
                             onShowSizeChange: this.onShowSizeChange,
                             onChange: this.pageChange,
                             showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} hosts`,
-                            itemRender: this.itemRender
+                            itemRender: this.itemRender,
                         }}
                         expandedRowRender={this.expandedRowRender}
                     >

@@ -11,7 +11,6 @@ class LastDurationTimePicker extends Component {
         value: '10'
     };
     handleChange = value => {
-        console.log("LastDurationTimePicker:", value);
         this.setState({value});
         this.props.actionFunc(value)
     };
@@ -21,7 +20,6 @@ class LastDurationTimePicker extends Component {
     }
 
     render() {
-        console.log("this.props.period::::",this.state.value);
         return <Select size={"small"} defaultValue={this.state.value} value={this.state.value} onChange={this.handleChange}
                        style={{width: 140}}>
             <Option key="1" value={'10'}>last 10 minutes</Option>
