@@ -39,9 +39,8 @@ class InstanceMonitor extends Component {
     };
 
     loadMonitorData = (echarts_instance) => {
+        echarts_instance.showLoading();
         this.state.ws.onmessage = msgEv => {
-            console.log('###### new monitor data coming ########');
-
             let t = [];
             let v = [];
             let {status, msg, data} = JSON.parse(msgEv.data);
@@ -51,6 +50,8 @@ class InstanceMonitor extends Component {
                 if (data.length > 0) {
                     let [{MetricName, Timestamps, Values}] = data;
                     Timestamps.forEach(
+                        // timestamp of  tenCent cloud is second based, while aliyun is milliseconds based.
+                        // so here use moment.unix(), while moment() used in tenCent cloud.
                         value => t.push(moment.unix(value).format('HH:mm:ss'))
                     );
                     Values.forEach(
@@ -59,7 +60,6 @@ class InstanceMonitor extends Component {
 
                     // change state to generate dynamic charts
                     this.setState({t, v});
-
                     let option = {
                         tooltip: {
                             trigger: 'axis',
@@ -80,10 +80,16 @@ class InstanceMonitor extends Component {
                             }
                         ]
                     };
+                    if (v.length > 0) {
+                        echarts_instance.hideLoading();
+                    } else {
+                        echarts_instance.showLoading();
+                    }
+                    // you should always set option, even empty data or chart will not be refreshed while empty data.
                     echarts_instance.setOption(option);
                 }
             }
-        };
+        }
     };
 
 

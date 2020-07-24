@@ -39,6 +39,7 @@ class InstanceMonitor extends Component {
     };
 
     loadMonitorData = (echarts_instance) => {
+        echarts_instance.showLoading();
         this.state.ws.onmessage = msgEv => {
             let t = [];
             let v = [];
@@ -59,7 +60,6 @@ class InstanceMonitor extends Component {
 
                     // change state to generate dynamic charts
                     this.setState({t, v});
-
                     let option = {
                         tooltip: {
                             trigger: 'axis',
@@ -80,6 +80,12 @@ class InstanceMonitor extends Component {
                             }
                         ]
                     };
+                    if (v.length > 0) {
+                        echarts_instance.hideLoading();
+                    } else {
+                        echarts_instance.showLoading();
+                    }
+                    // you should always set option, even empty data or chart will not be refreshed while empty data.
                     echarts_instance.setOption(option);
                 }
             }
