@@ -14,8 +14,14 @@ After finished backend deployment, you could continue the following steps.
 
 
 
+## Quick start with docker
 
-
+- > Need deploy api server (backend) first `->` [gocmdb-backend](https://github.com/gogo-fast/gocmdb-backend)
+-
+    ```shell script
+    docker pull docker3c/gocmdb-front:v0.1
+    docker run --name cmdb_fg -d --link cmdb-api-server:go.cmdb.com -p 8888:8888 docker3c/gocmdb-front:v0.1
+    ```
 
 
 ## Build on `linux mint` manually
@@ -117,7 +123,7 @@ After finished backend deployment, you could continue the following steps.
 - `http://go.cmdb.com:8888`
 
 
-## Quick start with docker
+## Build in docker
 
 - Docker version
 
